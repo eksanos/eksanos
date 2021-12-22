@@ -1,41 +1,44 @@
-public class Eksanos : Gtk.Application {
-	public Eksanos () {
-		Object (
-			application_id: "com.github.keilith-l.eksanos",
-			flags: ApplicationFlags.FLAGS_NONE
-		);
-	}
+namespace Eksanos{
+	public class Application : Gtk.Application {
+		public MainWindow app_window;
 
-	protected override void activate () {
-		var main_window = new Gtk.ApplicationWindow (this) {
-			default_height = 360,
-			default_width = 640,
-			title = "Eksanos"
-		};
+		public Application () {
+			Object (
+				application_id: "com.github.keilith-l.eksanos",
+				flags: ApplicationFlags.FLAGS_NONE
+			);
+		}
 
-		var board = new Gtk.Grid ();
+		protected override void activate () {
+			if (get_windows().length() > 0) {
+				app_window.present();
+				return;
+			}
 
-		init_board (board);
+			app_window = new MainWindow (this);
 
-	//	board.get_child_at (0,1).label = "0,1";
+			var board = new Gtk.Grid ();
 
-		main_window.add (board);
-		main_window.show_all ();
-	}
+			init_board (board);
 
-	public static int main (string[] args) {
-		return new Eksanos ().run (args);
-	}
+			app_window.add (board);
+			app_window.show_all ();
+		}
 
-	private void init_board(Gtk.Grid board) {
-		for (int r = 0; r < 3; ++r){
-			for (int c = 0; c < 3; ++c){
-				add_button_to_grid (board, r, c, 1, 1);
+		public static int main (string[] args) {
+			return new Application ().run (args);
+		}
+
+		private void init_board(Gtk.Grid board) {
+			for (int r = 0; r < 3; ++r){
+				for (int c = 0; c < 3; ++c){
+					add_button_to_grid (board, r, c, 1, 1);
+				}
 			}
 		}
-	}
 
-	private void add_button_to_grid (Gtk.Grid *grid, int row, int col, int span_row, int span_col ) {
-		grid->attach (new Gtk.Button.with_label ("-"), row, col, span_row, span_col);
+		private void add_button_to_grid (Gtk.Grid *grid, int row, int col, int span_row, int span_col ) {
+			grid->attach (new Gtk.Button.with_label ("-"), row, col, span_row, span_col);
+		}
 	}
 }
