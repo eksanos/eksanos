@@ -1,7 +1,7 @@
-public class HelloPackaging : Gtk.Application {
-	public HelloPackaging () {
+public class Eksanos : Gtk.Application {
+	public Eksanos () {
 		Object (
-			application_id: "com.github.keilith-l.hello-packaging",
+			application_id: "com.github.keilith-l.eksanos",
 			flags: ApplicationFlags.FLAGS_NONE
 		);
 	}
@@ -10,9 +10,9 @@ public class HelloPackaging : Gtk.Application {
 		var main_window = new Gtk.ApplicationWindow (this) {
 			default_height = 360,
 			default_width = 640,
-			title = "Hello Flatpak Packaging"
+			title = "Eksanos"
 		};
-		
+
 		var board = new Gtk.Grid ();
 
 		init_board (board);
@@ -24,7 +24,7 @@ public class HelloPackaging : Gtk.Application {
 	}
 
 	public static int main (string[] args) {
-		return new HelloPackaging ().run (args);
+		return new Eksanos ().run (args);
 	}
 
 	private void init_board(Gtk.Grid board) {
