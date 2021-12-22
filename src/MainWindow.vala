@@ -5,7 +5,7 @@ namespace Eksanos {
 				application: eksanos_app,
 				title: "Eksanos",
 				default_height: 360,
-				default_width: 640
+				default_width: 360
 			);
 		}
 
@@ -15,7 +15,6 @@ namespace Eksanos {
 			init_board (board);
 
 			add (board);
-
 		}
 
 		private void init_board(Gtk.Grid board) {
@@ -27,7 +26,11 @@ namespace Eksanos {
 		}
 
 		private void add_button_to_grid (Gtk.Grid *grid, int row, int col, int span_row, int span_col ) {
-			grid->attach (new Gtk.Button.with_label ("-"), row, col, span_row, span_col);
+			var button = new Gtk.Button.with_label("-");
+			button.expand = true;
+			button.margin = 8;
+
+			grid->attach (button, row, col, span_row, span_col);
 		}
 	}
 }
