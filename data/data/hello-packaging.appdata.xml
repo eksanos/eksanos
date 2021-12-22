@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright Keilith Lakeson <github.com/keilith-l> -->
+<component type="desktop">
+	<id>com.github.keilith-l.hello-packaging</id>
+	<metadata_license>CC0</metadata_license>
+	<name>Hello Packaging</name>
+	<summary>A baseline flatpak packagin example app</summary>
+	<discription><p>UWU Whats this? Oh it was supposed to be informative? my b</p></discription>
+</component>

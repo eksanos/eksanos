@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Hello Packaging
+GenericName=Packaging Example App
+Comment=Base Skeleton App with Flatpak packaging
+Catagories=Example;Utility;Education;
+Exec=com.github.keilith-l.hello-packaging
+Icon=com.github.keilith-l.hello-packaging
+Terminal=false
+Type=Application
+Keywords=Example;Packaging;Flatpak;
