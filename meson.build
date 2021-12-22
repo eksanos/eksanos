@@ -1,4 +1,4 @@
-project('com.github.keilith-l.hello-packaging', 'vala', 'c')
+project('com.github.keilith-l.eksanos', 'vala', 'c')
 
 executable(
 	meson.project_name(),
@@ -10,13 +10,13 @@ executable(
 )
 
 install_data(
-	'data'/'hello-packaging.desktop',
+	'data'/'eksanos.desktop',
 	install_dir: get_option('datadir') / 'applications',
 	rename: meson.project_name() + '.desktop'
 )
 
 install_data(
-	'data' / 'hello-packaging.appdata.xml',
+	'data' / 'eksanos.appdata.xml',
 	install_dir: get_option('datadir') / 'metainfo',
 	rename: meson.project_name() + '.appdata.xml'
 )
