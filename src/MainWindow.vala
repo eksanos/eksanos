@@ -87,6 +87,7 @@ namespace Eksanos {
 		public void place_marker (string marker_id) {
 			marker = marker_id;
 			button.label = marker;
+			button.set_sensitive(false);
 		}
 
 		public void on_tile_clicked () {
