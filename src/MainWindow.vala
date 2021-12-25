@@ -5,18 +5,21 @@ namespace Eksanos {
 		private Player player_one;
 		private Player player_two;
 		private Player* current_player;
+		private Gtk.Box game_screen;
 
 		public MainWindow (Eksanos.Application eksanos_app) {
 			Object (
 				application: eksanos_app,
 				title: "Eksanos",
 				default_height: 360,
-				default_width: 360,
-				resizable: false
+				default_width: 640,
+				resizable: true
 			);
 		}
 
 		construct {
+			game_screen = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+
 			player_one = new Player ("Player 1", "X");
 			player_two = new Player ("Player 2", "O");
 			current_player = player_one;
@@ -27,7 +30,15 @@ namespace Eksanos {
 
 			turn_counter = 0;
 
-			add (board.get_grid());
+			game_screen.pack_start(new Gtk.Label (player_one.get_name() + " info"), true, true, 0);
+
+			Gtk.Box board_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 8);
+			board_box.pack_start(board.get_grid(), true, false, 0);
+			game_screen.pack_start(board_box, false, false, 0);
+
+			game_screen.pack_start(new Gtk.Label (player_two.get_name() + " info"), true, true, 0);
+
+			add (game_screen);
 		}
 
 		private void on_marker_placed () {
@@ -112,6 +123,7 @@ namespace Eksanos {
 
 		construct {
 			board_grid = new Gtk.Grid ();
+			board_grid.set_size_request(360,360);
 			board_tiles = new Tile [3,3];
 			current_marker = "M";
 			init_board (" ");
