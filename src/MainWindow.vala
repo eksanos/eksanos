@@ -36,9 +36,9 @@ namespace Eksanos {
 			if (check_for_win_condition ()) {
 				print(current_player->get_name () + " wins!");
 				board.get_grid().set_sensitive(false);
+			} else {
+				swap_current_player ();
 			}
-
-			swap_current_player ();
 		}
 
 		private void swap_current_player () {
