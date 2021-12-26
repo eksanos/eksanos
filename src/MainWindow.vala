@@ -34,6 +34,8 @@ namespace Eksanos {
 
 			Gtk.Box board_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 8);
 			board_box.pack_start(board.get_grid(), true, false, 0);
+			Gtk.Button reset_button = new Gtk.Button.with_label ("New Game");
+			board_box.pack_end(reset_button, false, false, 4);
 			game_screen.pack_start(board_box, false, false, 0);
 
 			game_screen.pack_start(new Gtk.Label (player_two.get_name() + " info"), true, true, 0);
