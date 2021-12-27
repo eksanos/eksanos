@@ -7,8 +7,6 @@ namespace Eksanos {
 		private Player* current_player;
 
 		private Gtk.Box game_screen;
-		private Gtk.Box player_one_info_box;
-		private Gtk.Label player_one_score_label;
 
 		public MainWindow (Eksanos.Application eksanos_app) {
 			Object (
@@ -33,12 +31,7 @@ namespace Eksanos {
 
 			turn_counter = 0;
 
-			player_one_info_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 8);
-			player_one_info_box.pack_start(new Gtk.Label (player_one.get_name()), true, true, 2);
-			player_one_score_label = new Gtk.Label ("Score: ");
-			player_one_info_box.pack_start(player_one_score_label, true, true, 2);
-
-			game_screen.pack_start(player_one_info_box, true, true, 0);
+			game_screen.pack_start(player_one.get_info_box(), true, true, 0);
 
 			Gtk.Box board_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 8);
 			board_box.pack_start(board.get_grid(), true, false, 0);
@@ -47,7 +40,7 @@ namespace Eksanos {
 			board_box.pack_end(reset_button, false, false, 4);
 			game_screen.pack_start(board_box, false, false, 0);
 
-			game_screen.pack_start(new Gtk.Label (player_two.get_name() + " info"), true, true, 0);
+			game_screen.pack_start(player_two.get_info_box(), true, true, 0);
 
 			add (game_screen);
 		}
@@ -58,7 +51,6 @@ namespace Eksanos {
 			if (check_for_win_condition ()) {
 				print(current_player->get_name () + " wins!");
 				current_player->change_score_by (1);
-				player_one_score_label.set_label(current_player->get_score().to_string());
 				board.disable();
 			} else {
 				swap_current_player ();
