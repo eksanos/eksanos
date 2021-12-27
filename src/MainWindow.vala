@@ -5,7 +5,10 @@ namespace Eksanos {
 		private Player player_one;
 		private Player player_two;
 		private Player* current_player;
+
 		private Gtk.Box game_screen;
+		private Gtk.Box player_one_info_box;
+		private Gtk.Label player_one_score_label;
 
 		public MainWindow (Eksanos.Application eksanos_app) {
 			Object (
@@ -30,7 +33,12 @@ namespace Eksanos {
 
 			turn_counter = 0;
 
-			game_screen.pack_start(new Gtk.Label (player_one.get_name() + " info"), true, true, 0);
+			player_one_info_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 8);
+			player_one_info_box.pack_start(new Gtk.Label (player_one.get_name()), true, true, 2);
+			player_one_score_label = new Gtk.Label ("Score: ");
+			player_one_info_box.pack_start(player_one_score_label, true, true, 2);
+
+			game_screen.pack_start(player_one_info_box, true, true, 0);
 
 			Gtk.Box board_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 8);
 			board_box.pack_start(board.get_grid(), true, false, 0);
@@ -49,6 +57,8 @@ namespace Eksanos {
 
 			if (check_for_win_condition ()) {
 				print(current_player->get_name () + " wins!");
+				current_player->change_score_by (1);
+				player_one_score_label.set_label(current_player->get_score().to_string());
 				board.disable();
 			} else {
 				swap_current_player ();
@@ -105,10 +115,12 @@ namespace Eksanos {
 	internal class Player : GLib.Object {
 		private string player_name;
 		private string marker;
+		private int score;
 
 		public Player (string player_name, string marker) {
 			this.player_name = player_name;
 			this.marker = marker;
+			score = 0;
 		}
 
 		public string get_name () {
@@ -117,6 +129,14 @@ namespace Eksanos {
 
 		public string get_marker () {
 			return marker;
+		}
+
+		public void change_score_by (int delta) {
+			score = score + delta;
+		}
+
+		public int get_score () {
+			return score;
 		}
 	}
 
