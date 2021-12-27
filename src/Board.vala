@@ -7,9 +7,6 @@ namespace Eksanos {
 		public signal void marker_placed ();
 
 		public Board () {
-		}
-
-		construct {
 			board_grid = new Gtk.Grid ();
 			board_grid.set_size_request(360,360);
 			board_tiles = new Tile [3,3];
