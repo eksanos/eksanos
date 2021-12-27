@@ -35,6 +35,7 @@ namespace Eksanos {
 			Gtk.Box board_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 8);
 			board_box.pack_start(board.get_grid(), true, false, 0);
 			Gtk.Button reset_button = new Gtk.Button.with_label ("New Game");
+			reset_button.clicked.connect (start_new_round);
 			board_box.pack_end(reset_button, false, false, 4);
 			game_screen.pack_start(board_box, false, false, 0);
 
@@ -48,7 +49,7 @@ namespace Eksanos {
 
 			if (check_for_win_condition ()) {
 				print(current_player->get_name () + " wins!");
-				board.get_grid().set_sensitive(false);
+				board.disable();
 			} else {
 				swap_current_player ();
 			}
@@ -93,6 +94,12 @@ namespace Eksanos {
 			return true;
 		}
 
+		private void start_new_round () {
+			turn_counter = 0;
+			swap_current_player ();
+			board.clear_board ();
+			board.enable ();
+		}
 	}
 
 	internal class Player : GLib.Object {
@@ -169,6 +176,22 @@ namespace Eksanos {
 			return diag;
 		}
 
+		public void clear_board () {
+			for (int r = 0; r < 3; ++r) {
+				for (int c = 0; c < 3; ++c) {
+					board_tiles[c,r].clear_tile();
+				}
+			}
+		}
+
+		public void disable () {
+			board_grid.set_sensitive (false);
+		}
+
+		public void enable () {
+			board_grid.set_sensitive (true);
+		}
+
 		private void init_board (string empty_tile_marker) {
 			for (int r = 0; r < 3; ++r){
 				for (int c = 0; c < 3; ++c){
@@ -205,15 +228,18 @@ namespace Eksanos {
 			tile_id = id;
 		}
 
-		construct {
-		}
-
 		public Gtk.Button get_button () {
 			return button;
 		}
 
 		public string get_marker () {
 			return marker;
+		}
+
+		public void clear_tile () {
+			marker = " ";
+			button.label = marker;
+			button.set_sensitive(true);
 		}
 
 		public void place_marker (string marker_id) {
