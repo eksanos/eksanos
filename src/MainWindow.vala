@@ -23,8 +23,6 @@ namespace Eksanos {
 				title = "Eksanos"
 			};
 
-
-			get_style_context ().add_class("rounded");
 			game_controller = new GameController ();
 
 			global_grid.add (header_bar);
