@@ -13,8 +13,8 @@ namespace Eksanos {
 			this.marker = marker;
 			score = 0;
 
-			player_info_box.pack_start(new Gtk.Label (player_name), true, true, 2);
-			player_info_box.pack_start(player_score_label, true, true, 2);
+			player_info_box.pack_start(new Gtk.Label (player_name), false, false, 2);
+			player_info_box.pack_start(player_score_label, false, false, 2);
 
 		}
 
