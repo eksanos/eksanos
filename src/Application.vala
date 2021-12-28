@@ -10,9 +10,8 @@ namespace Eksanos{
 		}
 
 		protected override void activate () {
-			var gtk_settings = Gtk.Settings.get_default ();
-			gtk_settings.gtk_application_prefer_dark_theme = true;
-			
+			setup_color_preference ();
+
 			if (get_windows().length() > 0) {
 				app_window.present();
 				return;
@@ -21,6 +20,16 @@ namespace Eksanos{
 			app_window = new MainWindow (this);
 
 			app_window.show_all ();
+		}
+
+		private void setup_color_preference () {
+			var granite_settings = Granite.Settings.get_default ();
+			var gtk_settings = Gtk.Settings.get_default ();
+			gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
+
+			granite_settings.notify["prefers_color_scheme"].connect ( () => {
+				gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
+			});
 		}
 
 		public static int main (string[] args) {

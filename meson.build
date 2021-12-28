@@ -9,6 +9,7 @@ executable(
 	'src'/'Board.vala',
 	'src'/'Tile.vala',
 	dependencies: [
+		dependency('granite'),
 		dependency('gtk+-3.0')
 	],
 	install: true
