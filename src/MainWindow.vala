@@ -13,6 +13,7 @@ namespace Eksanos {
 		}
 
 		construct {
+			get_style_context ().add_class("rounded");
 			game_controller = new GameController ();
 			add (game_controller.get_game_screen ());
 		}
