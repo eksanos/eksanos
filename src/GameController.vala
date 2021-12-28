@@ -11,19 +11,33 @@ namespace Eksanos {
 		public GameController () {
 			game_screen = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
 
+			turn_counter = 0;
+
+			setup_players ();
+			setup_board ();
+			setup_game_screen ();
+		}
+
+		public Gtk.Box get_game_screen () {
+			return game_screen;
+		}
+
+		private void setup_players () {
 			player_one = new Player ("Player 1", "X");
 			player_two = new Player ("Player 2", "O");
 			current_player = player_one;
 			player_one.enable();
 			player_two.disable();
+		}
 
+		private void setup_board () {
 			board = new Board ();
 			board.marker_placed.connect (on_marker_placed);
 			board.set_current_marker (current_player->get_marker());
+		}
 
-			turn_counter = 0;
-
-			game_screen.pack_start(player_one.get_info_box(), true, true, 0);
+		private void setup_game_screen () {
+			game_screen.pack_start(player_one.get_info_box(), true, false, 4);
 
 			Gtk.Box board_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 8);
 			board_box.pack_start(board.get_grid(), true, false, 0);
@@ -32,11 +46,7 @@ namespace Eksanos {
 			board_box.pack_end(reset_button, false, false, 4);
 			game_screen.pack_start(board_box, false, false, 0);
 
-			game_screen.pack_start(player_two.get_info_box(), true, true, 0);
-		}
-
-		public Gtk.Box get_game_screen () {
-			return game_screen;
+			game_screen.pack_start(player_two.get_info_box(), true, false, 4);
 		}
 
 		private void on_marker_placed () {
