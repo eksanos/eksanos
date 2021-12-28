@@ -7,6 +7,7 @@ namespace Eksanos {
 		private Player* current_player;
 
 		private Gtk.Box game_screen;
+		private Gtk.Label turn_tracker_label;
 
 		public GameController () {
 			game_screen = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
@@ -40,6 +41,8 @@ namespace Eksanos {
 			game_screen.pack_start(player_one.get_info_box(), true, false, 4);
 
 			Gtk.Box board_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 8);
+			turn_tracker_label = new Gtk.Label (current_player->get_name() + "'s Turn");
+			board_box.pack_start (turn_tracker_label, false, false, 4);
 			board_box.pack_start(board.get_grid(), true, false, 0);
 			Gtk.Button reset_button = new Gtk.Button.with_label ("New Game");
 			reset_button.clicked.connect (start_new_round);
@@ -53,7 +56,7 @@ namespace Eksanos {
 			turn_counter = turn_counter + 1;
 
 			if (check_for_win_condition ()) {
-				print(current_player->get_name () + " wins!");
+				turn_tracker_label.set_label(current_player->get_name () + " wins!");
 				current_player->change_score_by (1);
 				board.disable();
 			} else {
@@ -71,6 +74,7 @@ namespace Eksanos {
 			}
 
 			current_player->enable ();
+			turn_tracker_label.set_label (current_player->get_name() + "'s Turn");
 
 			board.set_current_marker (current_player->get_marker());
 		}
