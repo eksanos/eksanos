@@ -1,5 +1,5 @@
 namespace Eksanos {
-	public class MainWindow : Gtk.ApplicationWindow {
+	public class MainWindow : Hdy.ApplicationWindow {
 		private GameController game_controller;
 
 		public MainWindow (Eksanos.Application eksanos_app) {
@@ -13,9 +13,23 @@ namespace Eksanos {
 		}
 
 		construct {
+			Hdy.init ();
+			var global_grid = new Gtk.Grid ();
+			global_grid.orientation = Gtk.Orientation.VERTICAL;
+
+			var header_bar = new Hdy.HeaderBar (){
+				has_subtitle = false,
+				show_close_button = true,
+				title = "Eksanos"
+			};
+
+
 			get_style_context ().add_class("rounded");
 			game_controller = new GameController ();
-			add (game_controller.get_game_screen ());
+
+			global_grid.add (header_bar);
+			global_grid.add (game_controller.get_game_screen ());
+			add (global_grid);
 		}
 	}
 }

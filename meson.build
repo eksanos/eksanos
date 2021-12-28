@@ -9,6 +9,7 @@ executable(
 	'src'/'Board.vala',
 	'src'/'Tile.vala',
 	dependencies: [
+		dependency('libhandy-1', version: '>=0.91.0'),
 		dependency('granite'),
 		dependency('gtk+-3.0')
 	],
