@@ -13,8 +13,8 @@ namespace Eksanos {
 			this.marker = marker;
 			score = 0;
 
-			player_info_box.pack_start(new Gtk.Label (player_name), false, false, 2);
-			player_info_box.pack_start(player_score_label, false, false, 2);
+			player_info_box.pack_start (new Gtk.Label (player_name), false, false, 2);
+			player_info_box.pack_start (player_score_label, false, false, 2);
 
 		}
 
@@ -34,5 +34,14 @@ namespace Eksanos {
 		public Gtk.Box get_info_box () {
 			return player_info_box;
 		}
+
+		public void disable () {
+			player_info_box.set_sensitive (false);
+		}
+
+		public void enable () {
+			player_info_box.set_sensitive (true);
+		}
+
 	}
 }
