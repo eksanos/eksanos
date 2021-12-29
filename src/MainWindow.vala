@@ -8,7 +8,7 @@ namespace Eksanos {
 				title: "Eksanos",
 				default_height: 360,
 				default_width: 640,
-				resizable: true
+				resizable: false
 			);
 		}
 
