@@ -8,6 +8,7 @@ executable(
 	'src'/'Player.vala',
 	'src'/'Board.vala',
 	'src'/'Tile.vala',
+	'src'/'Widgets'/'PlayerInfoBox.vala',
 	dependencies: [
 		dependency('libhandy-1', version: '>=0.91.0'),
 		dependency('granite'),
