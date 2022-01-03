@@ -1,21 +1,20 @@
 namespace Eksanos {
 	internal class Tile : GLib.Object {
-		private Gtk.Button button;
+		private Widgets.TileButton button;
 		private string marker;
 		private int tile_id;
 
 		public signal void tile_selected(int id);
 
 		public Tile (string default_marker, int id) {
-			button = new Gtk.Button.with_label(default_marker);
-			button.expand = true;
-			button.margin = 8;
+			button = new Widgets.TileButton (default_marker);
+
 			button.clicked.connect(on_tile_clicked);
 			marker = default_marker;
 			tile_id = id;
 		}
 
-		public Gtk.Button get_button () {
+		public Widgets.TileButton get_button () {
 			return button;
 		}
 
@@ -25,14 +24,14 @@ namespace Eksanos {
 
 		public void clear_tile () {
 			marker = " ";
-			button.label = marker;
-			button.set_sensitive(true);
+			button.clear_tile ();
+			button.enable ();
 		}
 
 		public void place_marker (string marker_id) {
 			marker = marker_id;
-			button.label = marker;
-			button.set_sensitive(false);
+			button.update_tile_marker (marker);
+			button.disable ();
 		}
 
 		public void on_tile_clicked () {
