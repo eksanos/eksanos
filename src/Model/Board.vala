@@ -1,21 +1,18 @@
-namespace Eksanos {
+namespace Eksanos.Model {
 	internal class Board : GLib.Object {
-		private Gtk.Grid board_grid;
-		private Tile[,] board_tiles;
+		private Model.Tile[,] board_tiles;
 		private string current_marker;
 
-		public signal void marker_placed ();
+		public signal void marker_placed (int col, int row, string marker);
 
 		public Board () {
-			board_grid = new Gtk.Grid ();
-			board_grid.set_size_request(360,360);
-			board_tiles = new Tile [3,3];
+			board_tiles = new Model.Tile [3,3];
+			for (int r = 0; r < 3; ++r){
+				for (int c = 0; c < 3; ++c){
+					board_tiles[c,r] = new Tile (" ", ((3*r + c)));
+				}
+			}
 			current_marker = "M";
-			init_board (" ");
-		}
-
-		public Gtk.Grid get_grid () {
-			return board_grid;
 		}
 
 		public void set_current_marker(string marker) {
@@ -60,31 +57,9 @@ namespace Eksanos {
 			}
 		}
 
-		public void disable () {
-			board_grid.set_sensitive (false);
-		}
-
-		public void enable () {
-			board_grid.set_sensitive (true);
-		}
-
-		private void init_board (string empty_tile_marker) {
-			for (int r = 0; r < 3; ++r){
-				for (int c = 0; c < 3; ++c){
-					board_tiles[c,r] = new Tile (empty_tile_marker, ((3*r + c)));
-					board_grid.attach (board_tiles[c,r].get_button(), c, r);
-
-					board_tiles[c,r].tile_selected.connect (on_tile_selected);
-				}
-			}
-		}
-
-		private void on_tile_selected (int id) {
-			var index_r = id/3;
-			var index_c = id%3;
-
-			board_tiles[index_c,index_r].place_marker(current_marker);
-			marker_placed ();
+		public void place_marker (int col, int row, string marker) {
+			board_tiles[col,row].place_marker (marker);
+			marker_placed (col, row, marker);
 		}
 	}
 }
