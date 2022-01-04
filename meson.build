@@ -4,6 +4,7 @@ executable(
 	meson.project_name(),
 	'src'/'Application.vala',
 	'src'/'MainWindow.vala',
+	'src'/'MainMenu.vala',
 	'src'/'GameController.vala',
 	'src'/'Model'/'Game.vala',
 	'src'/'Model'/'Player.vala',

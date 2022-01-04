@@ -2,6 +2,8 @@ namespace Eksanos {
 	public class MainWindow : Hdy.ApplicationWindow {
 		private GameController game_controller;
 		private MainMenu main_menu;
+		private Hdy.Deck deck;
+		private Gtk.Button nav_button;
 
 		public MainWindow (Eksanos.Application eksanos_app) {
 			Object (
@@ -18,6 +20,10 @@ namespace Eksanos {
 			var global_grid = new Gtk.Grid ();
 			global_grid.orientation = Gtk.Orientation.VERTICAL;
 
+			nav_button = new Gtk.Button.with_label ("Main Menu");
+			game_controller = new GameController ();
+			main_menu = new MainMenu ();
+
 			var header_bar = new Hdy.HeaderBar (){
 				hexpand = true,
 				has_subtitle = false,
@@ -25,16 +31,30 @@ namespace Eksanos {
 				title = "Eksanos"
 			};
 
-			game_controller = new GameController ();
+			header_bar.pack_start (nav_button);
+			nav_button.set_visible (false);
 
-			main_menu = new MainMenu ();
+
+			deck = new Hdy.Deck ();
+			deck.set_transition_type (Hdy.DeckTransitionType.UNDER);
+			deck.add (main_menu.get_menu_screen ());
+			deck.add (game_controller.get_game_screen ());
+			deck.set_visible_child (main_menu.get_menu_screen ());
+
 			main_menu.start_game_requested.connect ((a,b) => {
-				print (a + " " + b);
+				deck.set_visible_child (game_controller.get_game_screen ());
+				nav_button.set_visible (true);
+			});
+
+			nav_button.clicked.connect (() => {
+				deck.set_visible_child (main_menu.get_menu_screen ());
+				nav_button.set_visible (false);
+
 			});
 
 			global_grid.add (header_bar);
 
-			global_grid.add (main_menu.get_menu_screen ());
+			global_grid.add (deck);
 			//global_grid.add (game_controller.get_game_screen ());
 			add (global_grid);
 		}
