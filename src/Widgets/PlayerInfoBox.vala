@@ -18,5 +18,13 @@ namespace Eksanos.Widgets {
 		public void update_score_label (int score) {
 			player_score_label.set_label ("Matches Won: " + score.to_string());
 		}
+
+		public void disable () {
+			player_info_box.set_sensitive (false);
+		}
+
+		public void enable () {
+			player_info_box.set_sensitive (true);
+		}
 	}
 }
