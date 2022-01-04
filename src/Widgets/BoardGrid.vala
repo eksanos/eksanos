@@ -3,7 +3,7 @@ namespace Eksanos.Widgets {
 		private string empty_tile_marker;
 		private TileButton[,] tile_buttons;
 
-		public void cell_selected (int col, int row);
+		public signal void cell_selected (int[] position);
 
 		public BoardGrid (string empty_tile_marker) {
 			this.empty_tile_marker = empty_tile_marker;
@@ -18,6 +18,18 @@ namespace Eksanos.Widgets {
 
 		public void enable () {
 			set_sensitive (true);
+		}
+
+		public void update_tile_marker (int[] position, string marker) {
+			tile_buttons[position[0], position[1]].update_tile_marker (marker);
+		}
+
+		public void clear_board () {
+			for (int r = 0; r < 3; ++r){
+				for (int c = 0; c < 3; ++c){
+					tile_buttons[c,r].clear_tile ();
+				}
+			}
 		}
 
 		private void init_board (string empty_tile_marker) {
@@ -35,7 +47,11 @@ namespace Eksanos.Widgets {
 			var index_r = id/3;
 			var index_c = id%3;
 
-			cell_selected (index_c, index_r);
+			int[] position = new int[2];
+			position[0] = index_c;
+			position[1] = index_r;
+
+			cell_selected (position);
 		}
 
 	}

@@ -19,12 +19,16 @@ namespace Eksanos.Widgets {
 			player_score_label.set_label ("Matches Won: " + score.to_string());
 		}
 
+		public string get_player_name () {
+			return player_name_label.get_label ();
+		}
+
 		public void disable () {
-			player_info_box.set_sensitive (false);
+			set_sensitive (false);
 		}
 
 		public void enable () {
-			player_info_box.set_sensitive (true);
+			set_sensitive (true);
 		}
 	}
 }

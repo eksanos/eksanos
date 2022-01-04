@@ -1,119 +1,75 @@
 namespace Eksanos {
 	internal class GameController : GLib.Object {
-		private Board board;
-		private int turn_counter;
-		private Player player_one;
-		private Player player_two;
-		private Player* current_player;
-
-		private Gtk.Box game_screen;
-		private Gtk.Label turn_tracker_label;
+		private Widgets.GameScreen game_screen;
+		private Model.Game game_model;
 
 		public GameController () {
-			game_screen = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+			game_screen = new Widgets.GameScreen ();
+			game_model = new Model.Game ("Player 1", "Player 2");
 
-			turn_counter = 0;
+			game_model.player_score_updated.connect (on_player_score_updated);
+			game_model.player_turn_started.connect (on_player_turn_started);
+			game_model.player_turn_ended.connect (on_player_turn_ended);
+			game_model.player_won.connect (on_player_won);
+			game_model.player_lost.connect (on_player_lost);
+			game_model.match_completed.connect (on_match_completed);
+			game_model.board_updated.connect (on_board_updated);
+			game_model.marker_placed.connect (on_marker_placed);
+			game_model.new_match_ready.connect (on_new_match_ready);
 
-			setup_players ();
-			setup_board ();
-			setup_game_screen ();
+			game_screen.board_tile_clicked.connect (on_board_tile_clicked);
+			game_screen.new_game_clicked.connect (on_new_game_clicked);
 		}
 
 		public Gtk.Box get_game_screen () {
 			return game_screen;
 		}
 
-		private void setup_players () {
-			player_one = new Player ("Player 1", "X");
-			player_two = new Player ("Player 2", "O");
-			current_player = player_one;
-			player_one.enable();
-			player_two.disable();
+		private void on_player_score_updated (string player_name, int score) {
+			game_screen.update_player_score (player_name, score);
 		}
 
-		private void setup_board () {
-			board = new Board ();
-			board.marker_placed.connect (on_marker_placed);
-			board.set_current_marker (current_player->get_marker());
+		private void on_player_turn_started (string player_name) {
+			game_screen.highlight_player_info (player_name);
+			game_screen.update_turn_label (player_name);
 		}
 
-		private void setup_game_screen () {
-			game_screen.pack_start(player_one.get_info_box(), true, false, 4);
-
-			Gtk.Box board_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 8);
-			turn_tracker_label = new Gtk.Label (current_player->get_name() + "'s Turn");
-			board_box.pack_start (turn_tracker_label, false, false, 4);
-			board_box.pack_start(board.get_grid(), true, false, 0);
-			Gtk.Button reset_button = new Gtk.Button.with_label ("New Game");
-			reset_button.clicked.connect (start_new_round);
-			board_box.pack_end(reset_button, false, false, 4);
-			game_screen.pack_start(board_box, false, false, 0);
-
-			game_screen.pack_start(player_two.get_info_box(), true, false, 4);
+		private void on_player_turn_ended (string player_name) {
+			game_screen.dim_player_info (player_name);
 		}
 
-		private void on_marker_placed () {
-			turn_counter = turn_counter + 1;
-
-			if (check_for_win_condition ()) {
-				turn_tracker_label.set_label(current_player->get_name () + " wins!");
-				current_player->change_score_by (1);
-				board.disable();
-			} else {
-				swap_current_player ();
-			}
+		private void on_player_won (string player_name) {
+			return;
 		}
 
-		private void swap_current_player () {
-			current_player->disable ();
-
-			if (current_player == player_one) {
-				current_player = player_two;
-			} else {
-				current_player = player_one;
-			}
-
-			current_player->enable ();
-			turn_tracker_label.set_label (current_player->get_name() + "'s Turn");
-
-			board.set_current_marker (current_player->get_marker());
+		private void on_player_lost (string player_name) {
+			return;
 		}
 
-		private bool check_for_win_condition () {
-			for (int r = 0; r < 3; ++r){
-				if(three_in_a_row_check(board.get_row(r), current_player->get_marker ())){
-					return true;
-				}
-			}
-			for (int c = 0; c < 3; ++c){
-				if(three_in_a_row_check(board.get_col(c), current_player->get_marker ())){
-					return true;
-				}
-			}
-			for (int d = 0; d < 2; ++d){
-				if(three_in_a_row_check(board.get_diag(d), current_player->get_marker ())){
-					return true;
-				}
-			}
-
-			return false;
+		private void on_match_completed (string result) {
+			game_screen.disable_board ();
 		}
 
-		private bool three_in_a_row_check(string[] marker_array, string match_value) {
-			for (int i = 0; i < 3; ++i) {
-				if (marker_array[i] != match_value) {
-					return false;
-				}
-			}
-
-			return true;
+		private void on_board_updated (string[,] board_state) {
+			return;
 		}
 
-		private void start_new_round () {
-			turn_counter = 0;
-			swap_current_player ();
-			board.clear_board ();
-			board.enable ();
+		private void on_marker_placed (int[] position, string marker) {
+			game_screen.update_tile_marker (position, marker);
+		}
+
+		private void on_new_match_ready (string starting_player) {
+			game_screen.enable_board ();
+			game_screen.clear_board ();
+		}
+
+		private void on_board_tile_clicked (int[] position) {
+			game_model.place_marker (position);
+		}
+
+		private void on_new_game_clicked () {
+			game_model.start_new_match ();
 		}
 	}
+
 }

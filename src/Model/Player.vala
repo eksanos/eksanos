@@ -18,9 +18,12 @@ namespace Eksanos.Model {
 			return marker;
 		}
 
+		public int get_score () {
+			return score;
+		}
+
 		public void change_score_by (int delta) {
 			score = score + delta;
-			player_info_box.update_score_label (score);
 		}
 	}
 }

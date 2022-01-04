@@ -31,7 +31,7 @@ namespace Eksanos.Widgets {
 		}
 
 		public void on_tile_clicked () {
-			tile_selected(tile_id);
+			tile_selected(id);
 		}
 	}
 }

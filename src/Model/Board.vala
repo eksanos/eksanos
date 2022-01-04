@@ -1,22 +1,15 @@
 namespace Eksanos.Model {
 	internal class Board : GLib.Object {
 		private Model.Tile[,] board_tiles;
-		private string current_marker;
-
-		public signal void marker_placed (int col, int row, string marker);
+		private const string empty_space_marker = " ";
 
 		public Board () {
 			board_tiles = new Model.Tile [3,3];
 			for (int r = 0; r < 3; ++r){
 				for (int c = 0; c < 3; ++c){
-					board_tiles[c,r] = new Tile (" ", ((3*r + c)));
+					board_tiles[c,r] = new Tile (empty_space_marker, ((3*r + c)));
 				}
 			}
-			current_marker = "M";
-		}
-
-		public void set_current_marker(string marker) {
-			this.current_marker = marker;
 		}
 
 		public string[] get_row (int r) {
@@ -49,6 +42,10 @@ namespace Eksanos.Model {
 			return diag;
 		}
 
+		public bool is_position_empty (int[] position) {
+			return (" " == board_tiles[position[0], position[1]].get_marker ());
+		}
+
 		public void clear_board () {
 			for (int r = 0; r < 3; ++r) {
 				for (int c = 0; c < 3; ++c) {
@@ -59,7 +56,6 @@ namespace Eksanos.Model {
 
 		public void place_marker (int col, int row, string marker) {
 			board_tiles[col,row].place_marker (marker);
-			marker_placed (col, row, marker);
 		}
 	}
 }
