@@ -31,12 +31,10 @@ namespace Eksanos.Model {
 
 		public bool place_marker (int[] position) {
 			if (current_state == "match_finished") {
-				print ("Game already finished");
 				return false;
 			}
 
 			if (board.is_position_empty (position) == false) {
-				print ("Position Taken");
 				return false;
 			}
 
