@@ -27,7 +27,9 @@ namespace Eksanos {
 			game_model.marker_placed.connect (on_marker_placed);
 			game_model.new_match_ready.connect (on_new_match_ready);
 
+			game_screen.reset ();
 			game_screen.update_player_names (player_one_name, player_two_name);
+
 		}
 
 		private void on_player_score_updated (string player_name, int score) {

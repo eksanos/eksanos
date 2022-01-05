@@ -23,8 +23,8 @@ namespace Eksanos {
 			menu_box.set_vexpand (true);
 
 
-			player_one_name_entry_label = new Gtk.Label ("Player 1 name:");
-			player_two_name_entry_label = new Gtk.Label ("Player 2 name:");
+			player_one_name_entry_label = new Gtk.Label ("Player 1's name:");
+			player_two_name_entry_label = new Gtk.Label ("Player 2's name:");
 
 			player_one_name_entry = new Gtk.Entry ();
 			player_two_name_entry = new Gtk.Entry ();

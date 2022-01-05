@@ -19,6 +19,17 @@ namespace Eksanos.Widgets {
 			setup_game_screen ();
 		}
 
+		public void reset () {
+			board_grid.clear_board ();
+			board_grid.enable ();
+			player_one_info_box.update_player_name ("Player 1");
+			player_one_info_box.update_score_label (0);
+			player_one_info_box.enable ();
+			player_two_info_box.update_player_name ("Player 2");
+			player_two_info_box.update_score_label (0);
+			player_two_info_box.disable ();
+		}
+
 		public void update_player_names (string player_one_name, string player_two_name) {
 			player_one_info_box.update_player_name (player_one_name);
 			player_two_info_box.update_player_name (player_two_name);
