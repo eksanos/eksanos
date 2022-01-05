@@ -33,7 +33,7 @@ namespace Eksanos {
 
 			header_bar.pack_start (nav_button);
 			nav_button.set_visible (false);
-
+			nav_button.set_can_focus (false);
 
 			deck = new Hdy.Deck ();
 			deck.set_transition_type (Hdy.DeckTransitionType.UNDER);
