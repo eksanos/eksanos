@@ -28,6 +28,7 @@ namespace Eksanos.Widgets {
 			player_two_info_box.update_player_name ("Player 2");
 			player_two_info_box.update_score_label (0);
 			player_two_info_box.disable ();
+			turn_tracker_label.set_label ("Player 1's Turn");
 		}
 
 		public void update_player_names (string player_one_name, string player_two_name) {
