@@ -11,6 +11,9 @@ namespace Eksanos {
 
 		private Gtk.Button start_game_button;
 
+		private string player_one_name;
+		private string player_two_name;
+
 		public signal void start_game_requested (string player_one_name, string player_two_name);
 
 		public MainMenu () {
@@ -32,7 +35,7 @@ namespace Eksanos {
 			start_game_button = new Gtk.Button.with_label ("Start Game");
 
 
-			menu_box.pack_start (new Gtk.Label ("A TicTacToe Game"), true, true, 0);
+			menu_box.pack_start (new Gtk.Label ("A TicTacToe Game\nby keilith-l"), true, true, 0);
 			menu_box.pack_start (player_one_name_entry_label, false, false, 0);
 			menu_box.pack_start (player_one_name_entry, false, false, 0);
 			menu_box.pack_start (player_two_name_entry_label, false, false, 0);
@@ -48,10 +51,31 @@ namespace Eksanos {
 			return main_menu_screen;
 		}
 
+		public string get_player_one_name () {
+			return player_one_name;
+		}
+
+		public string get_player_two_name () {
+			return player_two_name;
+		}
+
 		private void on_start_game_clicked () {
-			if (check_names_different ()) {
-				start_game_requested (player_one_name_entry.get_text (), player_two_name_entry.get_text ());
+			player_one_name = player_one_name_entry.get_text ();
+			player_two_name = player_two_name_entry.get_text ();
+
+			if (player_one_name == "") {
+				player_one_name = player_one_name_entry.get_placeholder_text ();
 			}
+			if (player_two_name == "") {
+				player_two_name = player_two_name_entry.get_placeholder_text ();
+			}
+
+			if (player_one_name == player_two_name) {
+				player_one_name += "_X";
+				player_two_name += "_O";
+			}
+
+			start_game_requested (player_one_name_entry.get_text (), player_two_name_entry.get_text ());
 		}
 
 		private bool check_names_different () {

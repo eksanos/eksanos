@@ -19,6 +19,11 @@ namespace Eksanos.Widgets {
 			setup_game_screen ();
 		}
 
+		public void update_player_names (string player_one_name, string player_two_name) {
+			player_one_info_box.update_player_name (player_one_name);
+			player_two_info_box.update_player_name (player_two_name);
+		}
+
 		public void update_player_score (string player_name, int score) {
 			if (player_name == player_one_info_box.get_player_name ()) {
 				player_one_info_box.update_score_label (score);

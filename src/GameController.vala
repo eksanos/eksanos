@@ -5,7 +5,17 @@ namespace Eksanos {
 
 		public GameController () {
 			game_screen = new Widgets.GameScreen ();
-			game_model = new Model.Game ("Player 1", "Player 2");
+
+			game_screen.board_tile_clicked.connect (on_board_tile_clicked);
+			game_screen.new_game_clicked.connect (on_new_game_clicked);
+		}
+
+		public Gtk.Box get_game_screen () {
+			return game_screen;
+		}
+
+		public void generate_new_game (string player_one_name, string player_two_name) {
+			game_model = new Model.Game (player_one_name, player_two_name);
 
 			game_model.player_score_updated.connect (on_player_score_updated);
 			game_model.player_turn_started.connect (on_player_turn_started);
@@ -17,12 +27,7 @@ namespace Eksanos {
 			game_model.marker_placed.connect (on_marker_placed);
 			game_model.new_match_ready.connect (on_new_match_ready);
 
-			game_screen.board_tile_clicked.connect (on_board_tile_clicked);
-			game_screen.new_game_clicked.connect (on_new_game_clicked);
-		}
-
-		public Gtk.Box get_game_screen () {
-			return game_screen;
+			game_screen.update_player_names (player_one_name, player_two_name);
 		}
 
 		private void on_player_score_updated (string player_name, int score) {

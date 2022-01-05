@@ -23,6 +23,10 @@ namespace Eksanos.Widgets {
 			return player_name_label.get_label ();
 		}
 
+		public void update_player_name (string player_name) {
+			player_name_label.set_label (player_name);
+		}
+
 		public void disable () {
 			set_sensitive (false);
 		}

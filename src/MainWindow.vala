@@ -42,6 +42,7 @@ namespace Eksanos {
 			deck.set_visible_child (main_menu.get_menu_screen ());
 
 			main_menu.start_game_requested.connect ((a,b) => {
+				game_controller.generate_new_game (main_menu.get_player_one_name (), main_menu.get_player_two_name ());
 				deck.set_visible_child (game_controller.get_game_screen ());
 				nav_button.set_visible (true);
 			});
@@ -55,7 +56,6 @@ namespace Eksanos {
 			global_grid.add (header_bar);
 
 			global_grid.add (deck);
-			//global_grid.add (game_controller.get_game_screen ());
 			add (global_grid);
 		}
 	}
