@@ -37,13 +37,13 @@ namespace Eksanos {
 			color_drop_down = new Widgets.ColorDropDown ();
 
 			menu_box.pack_start (new Gtk.Label ("A TicTacToe Game\nby keilith-l"), true, true, 0);
-			menu_box.pack_start (color_drop_down, false, false, 0);
 
 			menu_box.pack_start (player_one_name_entry_label, false, false, 0);
 			menu_box.pack_start (player_one_name_entry, false, false, 0);
 			menu_box.pack_start (player_two_name_entry_label, false, false, 0);
 			menu_box.pack_start (player_two_name_entry, false, false, 0);
 			menu_box.pack_start (start_game_button, true, false, 0);
+			menu_box.pack_start (color_drop_down, true, false, 0);
 
 			main_menu_screen.pack_start (menu_box, true, false, 0);
 
