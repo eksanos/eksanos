@@ -11,6 +11,7 @@ namespace Eksanos{
 
 		protected override void activate () {
 			setup_color_preference ();
+			setup_custom_resources ();
 
 			if (get_windows().length() > 0) {
 				app_window.present();
@@ -30,6 +31,10 @@ namespace Eksanos{
 			granite_settings.notify["prefers_color_scheme"].connect (() => {
 				gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
 			});
+		}
+
+		private void setup_custom_resources () {
+			Gtk.IconTheme.get_default ().add_resource_path("/com/github/keilith-l/eksanos");
 		}
 
 		public static int main (string[] args) {

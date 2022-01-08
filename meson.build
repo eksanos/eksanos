@@ -1,7 +1,16 @@
 project('com.github.keilith-l.eksanos', 'vala', 'c')
 
+gnome = import('gnome')
+
+gresource = gnome.compile_resources(
+	'gresource',
+	'data'/'gresource.xml',
+	source_dir: 'data'
+)
+
 executable(
 	meson.project_name(),
+	gresource,
 	'src'/'Application.vala',
 	'src'/'MainWindow.vala',
 	'src'/'MainMenu.vala',
