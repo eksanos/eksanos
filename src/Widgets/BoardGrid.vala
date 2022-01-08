@@ -24,6 +24,15 @@ namespace Eksanos.Widgets {
 			tile_buttons[position[0], position[1]].update_tile_marker (marker);
 		}
 
+		public void update_marker_color (string color_name) {
+			string path = "/com/github/keilith-l/eksanos/";
+			for (int r = 0; r < 3; ++r){
+				for (int c = 0; c < 3; ++c){
+					tile_buttons[c,r].update_color_path (path, color_name);
+				}
+			}
+		}
+
 		public void clear_board () {
 			for (int r = 0; r < 3; ++r){
 				for (int c = 0; c < 3; ++c){

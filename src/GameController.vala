@@ -14,7 +14,7 @@ namespace Eksanos {
 			return game_screen;
 		}
 
-		public void generate_new_game (string player_one_name, string player_two_name) {
+		public void generate_new_game (string player_one_name, string player_two_name, string color_name) {
 			game_model = new Model.Game (player_one_name, player_two_name);
 
 			game_model.player_score_updated.connect (on_player_score_updated);
@@ -29,6 +29,7 @@ namespace Eksanos {
 
 			game_screen.reset ();
 			game_screen.update_player_names (player_one_name, player_two_name);
+			game_screen.update_marker_color (color_name);
 
 		}
 

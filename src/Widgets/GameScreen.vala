@@ -80,6 +80,10 @@ namespace Eksanos.Widgets {
 			board_grid.update_tile_marker (position, marker);
 		}
 
+		public void update_marker_color (string color_name) {
+			board_grid.update_marker_color (color_name);
+		}
+
 		private void setup_game_screen () {
 			Gtk.Frame board_frame = new Gtk.Frame (null);
 			board_frame.add (board_grid);

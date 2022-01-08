@@ -30,6 +30,11 @@ namespace Eksanos.Widgets {
 			}
 		}
 
+		public void update_color_path (string path, string color_name) {
+			circle_res_path = path + "circle_" + color_name + ".png";
+			cross_res_path = path + "cross_" + color_name + ".png";
+		}
+
 		public void clear_tile () {
 			set_image (null);
 		}

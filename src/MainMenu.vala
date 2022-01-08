@@ -16,7 +16,7 @@ namespace Eksanos {
 		private string player_one_name;
 		private string player_two_name;
 
-		public signal void start_game_requested (string player_one_name, string player_two_name);
+		public signal void start_game_requested (string player_one_name, string player_two_name, string color_name);
 
 		public MainMenu () {
 			main_menu_screen = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 8);
@@ -54,15 +54,7 @@ namespace Eksanos {
 		public Gtk.Box get_menu_screen () {
 			return main_menu_screen;
 		}
-
-		public string get_player_one_name () {
-			return player_one_name;
-		}
-
-		public string get_player_two_name () {
-			return player_two_name;
-		}
-
+		
 		private void on_start_game_clicked () {
 			player_one_name = player_one_name_entry.get_text ();
 			player_two_name = player_two_name_entry.get_text ();
@@ -79,7 +71,7 @@ namespace Eksanos {
 				player_two_name += "_O";
 			}
 
-			start_game_requested (player_one_name_entry.get_text (), player_two_name_entry.get_text ());
+			start_game_requested (player_one_name_entry.get_text (), player_two_name_entry.get_text (), color_drop_down.get_active_text ());
 		}
 	}
 }
