@@ -50,7 +50,6 @@ namespace Eksanos {
 			nav_button.clicked.connect (() => {
 				deck.set_visible_child (main_menu.get_menu_screen ());
 				nav_button.set_visible (false);
-
 			});
 
 			global_grid.add (header_bar);
