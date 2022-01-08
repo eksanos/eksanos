@@ -17,6 +17,7 @@ namespace Eksanos.Widgets {
 			expand = true;
 			margin = 8;
 			set_size_request (112, 112);
+			set_can_focus (false);
 			clicked.connect(on_tile_clicked);
 		}
 
