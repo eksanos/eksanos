@@ -44,6 +44,7 @@ namespace Eksanos {
 
 			main_menu_screen.pack_start (menu_box, true, false, 0);
 
+			start_game_button.grab_focus ();
 			start_game_button.clicked.connect (on_start_game_clicked);
 		}
 
