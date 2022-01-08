@@ -11,6 +11,8 @@ namespace Eksanos {
 
 		private Gtk.Button start_game_button;
 
+		private Widgets.ColorDropDown color_drop_down;
+
 		private string player_one_name;
 		private string player_two_name;
 
@@ -22,7 +24,6 @@ namespace Eksanos {
 			menu_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 8);
 			menu_box.set_vexpand (true);
 
-
 			player_one_name_entry_label = new Gtk.Label ("Player 1's name:");
 			player_two_name_entry_label = new Gtk.Label ("Player 2's name:");
 
@@ -33,8 +34,11 @@ namespace Eksanos {
 			player_two_name_entry.set_placeholder_text ("Player 2");
 
 			start_game_button = new Gtk.Button.with_label ("Start Game");
+			color_drop_down = new Widgets.ColorDropDown ();
 
 			menu_box.pack_start (new Gtk.Label ("A TicTacToe Game\nby keilith-l"), true, true, 0);
+			menu_box.pack_start (color_drop_down, false, false, 0);
+
 			menu_box.pack_start (player_one_name_entry_label, false, false, 0);
 			menu_box.pack_start (player_one_name_entry, false, false, 0);
 			menu_box.pack_start (player_two_name_entry_label, false, false, 0);
