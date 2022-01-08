@@ -71,7 +71,7 @@ namespace Eksanos {
 				player_two_name += "_O";
 			}
 
-			start_game_requested (player_one_name, player_two_name, color_drop_down.get_active_text ());
+			start_game_requested (player_one_name, player_two_name, color_drop_down.get_color_selected ());
 		}
 	}
 }
