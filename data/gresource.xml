@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
 	<gresource prefix="/com/github/keilith-l/eksanos">
-		<file >cross.png</file>
-		<file >circle.png</file>
+		<file >cross_banana.png</file>
+		<file >cross_blueberry.png</file>
+		<file >cross_bubblegum.png</file>
+		<file >cross_cocoa.png</file>
+		<file >cross_grape.png</file>
+		<file >cross_lime.png</file>
+		<file >cross_mint.png</file>
+		<file >cross_orange.png</file>
+		<file >cross_slate.png</file>
+		<file >cross_strawberry.png</file>
+		<file >circle_banana.png</file>
+		<file >circle_blueberry.png</file>
+		<file >circle_bubblegum.png</file>
+		<file >circle_cocoa.png</file>
+		<file >circle_grape.png</file>
+		<file >circle_lime.png</file>
+		<file >circle_mint.png</file>
+		<file >circle_orange.png</file>
+		<file >circle_slate.png</file>
+		<file >circle_strawberry.png</file>
 	</gresource>
 </gresources>

@@ -81,12 +81,15 @@ namespace Eksanos.Widgets {
 		}
 
 		private void setup_game_screen () {
+			Gtk.Frame board_frame = new Gtk.Frame (null);
+			board_frame.add (board_grid);
+
 			pack_start(player_one_info_box, true, false, 4);
 
 			Gtk.Box board_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 8);
 			turn_tracker_label = new Gtk.Label ("Player 1" + "'s Turn");
 			board_box.pack_start (turn_tracker_label, false, false, 4);
-			board_box.pack_start (board_grid, true, false, 0);
+			board_box.pack_start (board_frame, true, false, 0);
 			Gtk.Button reset_button = new Gtk.Button.with_label ("New Game");
 			reset_button.clicked.connect (on_new_match_clicked);
 			board_box.pack_end (reset_button, false, false, 4);

@@ -77,9 +77,5 @@ namespace Eksanos {
 
 			start_game_requested (player_one_name_entry.get_text (), player_two_name_entry.get_text ());
 		}
-
-		private bool check_names_different () {
-			return player_one_name_entry.get_text () != player_two_name_entry.get_text ();
-		}
 	}
 }

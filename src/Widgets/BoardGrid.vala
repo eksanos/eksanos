@@ -36,7 +36,9 @@ namespace Eksanos.Widgets {
 			for (int r = 0; r < 3; ++r){
 				for (int c = 0; c < 3; ++c){
 					tile_buttons[c,r] = new TileButton (empty_tile_marker, ((3*r + c)));
-					attach (tile_buttons[c,r], c, r);
+					Gtk.Frame cell_frame = new Gtk.Frame (null);
+					cell_frame.add(tile_buttons[c,r]);
+					attach (cell_frame, c, r);
 
 					tile_buttons[c,r].tile_selected.connect (on_tile_selected);
 				}
