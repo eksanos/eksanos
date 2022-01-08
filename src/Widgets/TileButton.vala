@@ -11,6 +11,7 @@ namespace Eksanos.Widgets {
 			expand = true;
 			margin = 8;
 			set_label (default_marker);
+			set_size_request (100, 100);
 			clicked.connect(on_tile_clicked);
 		}
 
