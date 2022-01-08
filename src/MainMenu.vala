@@ -54,7 +54,7 @@ namespace Eksanos {
 		public Gtk.Box get_menu_screen () {
 			return main_menu_screen;
 		}
-		
+
 		private void on_start_game_clicked () {
 			player_one_name = player_one_name_entry.get_text ();
 			player_two_name = player_two_name_entry.get_text ();
@@ -71,7 +71,7 @@ namespace Eksanos {
 				player_two_name += "_O";
 			}
 
-			start_game_requested (player_one_name_entry.get_text (), player_two_name_entry.get_text (), color_drop_down.get_active_text ());
+			start_game_requested (player_one_name, player_two_name, color_drop_down.get_active_text ());
 		}
 	}
 }
