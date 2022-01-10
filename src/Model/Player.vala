@@ -46,20 +46,12 @@ namespace Eksanos.Model {
 		}
 
 		public void react_to_board_update (string[,] board_state) {
-			print ("reacting to board update\n");
-			for (int r = 0; r < 3; ++r) {
-				for (int c = 0; c < 3; ++c) {
-					print (board_state[c,r]);
-				}
-			}
 			this.board_state = board_state;
 		}
 
 		public void react_to_turn_start (string player_name) {
 			if (player_name == this.player_name) {
-				print ("com turn start\n");
 				GLib.Timeout.add_seconds_full (GLib.Priority.DEFAULT, think_seconds, decide_move);
-				//decide_move ();
 			}
 		}
 

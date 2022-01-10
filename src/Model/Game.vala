@@ -39,8 +39,6 @@ namespace Eksanos.Model {
 			turn_counter = 1;
 			current_state = "match_in_progress";
 
-			print (current_player->get_name ());
-
 			player_turn_started (current_player->get_name ());
 		}
 
