@@ -66,7 +66,6 @@ namespace Eksanos.Model {
 			marker_placed (position, current_player->get_marker ());
 			board_updated (board.get_state ());
 
-
 			if (check_for_win_condition ()) {
 				current_player->change_score_by (1);
 				player_score_updated (current_player->get_name (), current_player->get_score ());
