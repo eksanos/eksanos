@@ -11,12 +11,13 @@ namespace Eksanos {
 
 		private Gtk.Button start_game_button;
 
+		private Gtk.CheckButton single_player_mode_checkbutton;
 		private Widgets.ColorDropDown color_drop_down;
 
 		private string player_one_name;
 		private string player_two_name;
 
-		public signal void start_game_requested (string player_one_name, string player_two_name, string color_name);
+		public signal void start_game_requested (string player_one_name, string player_two_name, bool single_player_mode, string color_name);
 
 		public MainMenu () {
 			main_menu_screen = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 8);
@@ -34,6 +35,8 @@ namespace Eksanos {
 			player_two_name_entry.set_placeholder_text ("Player 2");
 
 			start_game_button = new Gtk.Button.with_label ("Start Game");
+			single_player_mode_checkbutton = new Gtk.CheckButton.with_label ("Single Player Mode");
+			single_player_mode_checkbutton.set_active (true);
 			color_drop_down = new Widgets.ColorDropDown ();
 
 			menu_box.pack_start (new Gtk.Label ("A TicTacToe Game\nby keilith-l"), true, true, 0);
@@ -44,6 +47,7 @@ namespace Eksanos {
 			menu_box.pack_start (player_two_name_entry, false, false, 0);
 			menu_box.pack_start (start_game_button, true, false, 0);
 			menu_box.pack_start (color_drop_down, true, false, 0);
+			menu_box.pack_start (single_player_mode_checkbutton, true, false, 0);
 
 			main_menu_screen.pack_start (menu_box, true, false, 0);
 
@@ -71,7 +75,7 @@ namespace Eksanos {
 				player_two_name += "_O";
 			}
 
-			start_game_requested (player_one_name, player_two_name, color_drop_down.get_color_selected ());
+			start_game_requested (player_one_name, player_two_name, single_player_mode_checkbutton.get_active () ,color_drop_down.get_color_selected ());
 		}
 	}
 }

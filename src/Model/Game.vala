@@ -18,9 +18,13 @@ namespace Eksanos.Model {
 		public signal void player_lost (string player_name);
 		public signal void player_score_updated (string player_name, int score);
 
-		public Game (string player_one_name, string player_two_name) {
+		public Game (string player_one_name, string player_two_name, bool single_player_mode) {
 			player_one = new Model.Player (player_one_name, "X");
-			player_two = new Model.ComPlayer (player_two_name, "O");
+			if (single_player_mode) {
+				player_two = new Model.ComPlayer (player_two_name, "O");
+			} else {
+				player_two = new Model.Player (player_two_name, "O");
+			}
 
 			if (player_two is Model.ComPlayer) {
 				((Model.ComPlayer) player_two).move_decided.connect (on_com_player_move_decided);
@@ -41,7 +45,10 @@ namespace Eksanos.Model {
 		}
 
 		public bool human_place_marker (int[] position) {
-			place_marker (position, current_player->get_name ());
+			if (player_two is Model.ComPlayer) {
+				return place_marker (position, player_one.get_name ());
+			}
+			return place_marker (position, current_player->get_name ());
 		}
 
 		public bool place_marker (int[] position, string player_name) {
@@ -142,7 +149,7 @@ namespace Eksanos.Model {
 		}
 
 		private void on_com_player_move_decided (int[] position) {
-			place_marker (position);
+			place_marker (position, player_two.get_name ());
 		}
 	}
 }

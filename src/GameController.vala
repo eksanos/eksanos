@@ -14,8 +14,8 @@ namespace Eksanos {
 			return game_screen;
 		}
 
-		public void generate_new_game (string player_one_name, string player_two_name, string color_name) {
-			game_model = new Model.Game (player_one_name, player_two_name);
+		public void generate_new_game (string player_one_name, string player_two_name, bool single_player_mode, string color_name) {
+			game_model = new Model.Game (player_one_name, player_two_name, single_player_mode);
 
 			game_model.player_score_updated.connect (on_player_score_updated);
 			game_model.player_turn_started.connect (on_player_turn_started);

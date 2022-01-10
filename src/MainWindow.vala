@@ -57,8 +57,8 @@ namespace Eksanos {
 		}
 
 		private void setup_connections () {
-			main_menu.start_game_requested.connect ((player_one_name, player_two_name, color_name) => {
-				game_controller.generate_new_game (player_one_name, player_two_name, color_name);
+			main_menu.start_game_requested.connect ((player_one_name, player_two_name, single_player_mode, color_name) => {
+				game_controller.generate_new_game (player_one_name, player_two_name, single_player_mode, color_name);
 				deck.set_visible_child (game_controller.get_game_screen ());
 				nav_button.set_visible (true);
 			});
