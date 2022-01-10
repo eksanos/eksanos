@@ -7,7 +7,9 @@ namespace Eksanos.Widgets {
 		public ColorDropDown () {
 			combo_box = new Gtk.ComboBoxText ();
 			label = new Gtk.Label ("Piece Color:");
-			set_spacing (4);
+			label.set_justify (Gtk.Justification.LEFT);
+			set_halign (Gtk.Align.START);
+			set_spacing (12);
 
 			color_options = new string[10];
 			color_options = {
@@ -28,7 +30,7 @@ namespace Eksanos.Widgets {
 			}
 
 			combo_box.set_active (0);
-			
+
 			add(label);
 			add(combo_box);
 		}
