@@ -42,6 +42,18 @@ namespace Eksanos.Model {
 			return diag;
 		}
 
+		public string[,] get_state () {
+			string[,] state = new string [3,3];
+
+			for (int r = 0; r < 3; ++r) {
+				for (int c = 0; c < 3; ++c) {
+					state[c,r] = board_tiles[c,r].get_marker();
+				}
+			}
+
+			return state;
+		}
+
 		public bool is_position_empty (int[] position) {
 			return (" " == board_tiles[position[0], position[1]].get_marker ());
 		}

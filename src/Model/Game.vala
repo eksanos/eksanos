@@ -20,16 +20,35 @@ namespace Eksanos.Model {
 
 		public Game (string player_one_name, string player_two_name) {
 			player_one = new Model.Player (player_one_name, "X");
-			player_two = new Model.Player (player_two_name, "O");
+			player_two = new Model.ComPlayer (player_two_name, "O");
+
+			if (player_two is Model.ComPlayer) {
+				((Model.ComPlayer) player_two).move_decided.connect (on_com_player_move_decided);
+				player_turn_started.connect(((Model.ComPlayer) player_two).react_to_turn_start);
+				board_updated.connect(((Model.ComPlayer) player_two).react_to_board_update);
+			}
+
 			current_player = player_one;
 
 			board = new Model.Board ();
 
 			turn_counter = 1;
 			current_state = "match_in_progress";
+
+			print (current_player->get_name ());
+
+			player_turn_started (current_player->get_name ());
 		}
 
-		public bool place_marker (int[] position) {
+		public bool human_place_marker (int[] position) {
+			place_marker (position, current_player->get_name ());
+		}
+
+		public bool place_marker (int[] position, string player_name) {
+			if (player_name != current_player->get_name ()) {
+				return false;
+			}
+
 			if (current_state == "match_finished") {
 				return false;
 			}
@@ -40,6 +59,8 @@ namespace Eksanos.Model {
 
 			board.place_marker (position[0], position[1], current_player->get_marker ());
 			marker_placed (position, current_player->get_marker ());
+			board_updated (board.get_state ());
+
 
 			if (check_for_win_condition ()) {
 				current_player->change_score_by (1);
@@ -49,7 +70,6 @@ namespace Eksanos.Model {
 				match_completed ("victory");
 				player_won (current_player->get_name ());
 				player_lost (get_waiting_player().get_name ());
-
 			} else {
 				turn_counter += 1;
 				if (turn_counter <= 9) {
@@ -59,7 +79,6 @@ namespace Eksanos.Model {
 				} else {
 					match_completed ("draw");
 				}
-
 			}
 
 			return true;
@@ -69,6 +88,7 @@ namespace Eksanos.Model {
 			turn_counter = 1;
 			current_state = "match_in_progress";
 			board.clear_board ();
+			board_updated (board.get_state ());
 			player_turn_ended (current_player->get_name ());
 			swap_current_player ();
 			player_turn_started (current_player->get_name ());
@@ -119,6 +139,10 @@ namespace Eksanos.Model {
 			}
 
 			return true;
+		}
+
+		private void on_com_player_move_decided (int[] position) {
+			place_marker (position);
 		}
 	}
 }

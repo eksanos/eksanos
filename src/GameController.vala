@@ -38,11 +38,14 @@ namespace Eksanos {
 		}
 
 		private void on_player_turn_started (string player_name) {
+			print (player_name + " turn started GAMECONTROLLER\n");
 			game_screen.highlight_player_info (player_name);
 			game_screen.update_turn_label (player_name);
 		}
 
 		private void on_player_turn_ended (string player_name) {
+			print (player_name + " turn ended GAMECONTROLLER\n");
+
 			game_screen.dim_player_info (player_name);
 		}
 
@@ -72,7 +75,7 @@ namespace Eksanos {
 		}
 
 		private void on_board_tile_clicked (int[] position) {
-			game_model.place_marker (position);
+			game_model.human_place_marker (position);
 		}
 
 		private void on_new_game_clicked () {
