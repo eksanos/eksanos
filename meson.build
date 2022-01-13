@@ -1,4 +1,4 @@
-project('com.github.keilith-l.eksanos', 'vala', 'c')
+project('com.github.keilith_l.eksanos', 'vala', 'c')
 
 gnome = import('gnome')
 
