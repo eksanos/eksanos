@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2022 Justin Lahman <justinlahmanCS@gmail.com>
+ */
 namespace Eksanos.Model {
 	internal class Game : GLib.Object {
 		private Model.Player player_one;
