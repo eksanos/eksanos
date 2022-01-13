@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright Keilith Lakeson <github.com/keilith-l> -->
+<!-- Copyright Justin Lahman <github.com/jlahman> -->
 <component type="desktop">
 	<id>com.github.eksanos.eksanos</id>
 	<metadata_license>CC0</metadata_license>
 	<name>Eksanos</name>
 	<summary>A simple TicTacToe app</summary>
-	<description><p>UWU Whats this? Oh it was supposed to be informative? my b</p></description>
+	<description><p>Play the classic game of Naughts and Crosses by yourself or with a friend!</p></description>
 </component>
