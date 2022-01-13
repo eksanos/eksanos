@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=Eksanos
-GenericName=TicTacToe
+GenericName=TicTacToe;Naughts and Crosses;
 Comment=Simple TicTacToe Game
 Catagories=Game;Utility;Education;
-Exec=com.github.keilith_l.eksanos
-Icon=com.github.keilith_l.eksanos
+Exec=com.github.eksanos.eksanos
+Icon=com.github.eksanos.eksanos
 Terminal=false
 Type=Application
 Keywords=Example;
