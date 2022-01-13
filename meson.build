@@ -39,7 +39,7 @@ install_data(
 )
 
 install_data(
-	'data' / 'eksanos.appdata.xml',
+	'data' / 'eksanos.metainfo.xml',
 	install_dir: get_option('datadir') / 'metainfo',
 	rename: meson.project_name() + '.appdata.xml'
 )
