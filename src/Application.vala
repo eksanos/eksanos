@@ -8,7 +8,7 @@ namespace Eksanos{
 
 		public Application () {
 			Object (
-				application_id: "com.github.keilith-l.eksanos",
+				application_id: "com.github.eksanos.eksanos",
 				flags: ApplicationFlags.FLAGS_NONE
 			);
 		}
