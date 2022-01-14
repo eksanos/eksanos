@@ -41,7 +41,7 @@ install_data(
 install_data(
 	'data' / 'eksanos.metainfo.xml',
 	install_dir: get_option('datadir') / 'metainfo',
-	rename: meson.project_name() + '.appdata.xml'
+	rename: meson.project_name() + '.metainfo.xml'
 )
 
 icon_sizes = ['16', '24', '32', '48', '64', '128']
