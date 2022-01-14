@@ -64,7 +64,7 @@ namespace Eksanos {
 			color_drop_down = new Widgets.ColorDropDown ();
 			color_drop_down.set_halign (Gtk.Align.START);
 
-			menu_box.pack_start (new Gtk.Label ("A TicTacToe Game\nby keilith-l"), true, true, 0);
+			menu_box.pack_start (new Gtk.Label ("A TicTacToe Game"), true, true, 0);
 
 			menu_box.pack_start (player_one_name_box, false, true, 0);
 			menu_box.pack_start (player_two_name_box, false, false, 0);
