@@ -34,7 +34,7 @@ namespace Eksanos{
 		}
 
 		private void setup_custom_resources () {
-			Gtk.IconTheme.get_default ().add_resource_path("/com/github/keilith-l/eksanos");
+			Gtk.IconTheme.get_default ().add_resource_path("/com/github/eksanos/eksanos");
 		}
 
 		public static int main (string[] args) {

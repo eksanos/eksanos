@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-	<gresource prefix="/com/github/keilith-l/eksanos">
+	<gresource prefix="/com/github/eksanos/eksanos">
 		<file >cross_banana.png</file>
 		<file >cross_blueberry.png</file>
 		<file >cross_bubblegum.png</file>

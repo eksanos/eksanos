@@ -11,8 +11,8 @@ namespace Eksanos.Widgets {
 		public TileButton (string default_marker, int id) {
 			this.default_marker = default_marker;
 			this.id = id;
-			circle_res_path = "/com/github/keilith-l/eksanos/circle_banana.png";
-			cross_res_path = "/com/github/keilith-l/eksanos/cross_banana.png";
+			circle_res_path = "/com/github/eksanos/eksanos/circle_banana.png";
+			cross_res_path = "/com/github/eksanos/eksanos/cross_banana.png";
 			set_relief (Gtk.ReliefStyle.NONE);
 			expand = true;
 			margin = 8;
