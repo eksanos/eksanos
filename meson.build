@@ -1,4 +1,4 @@
-project('com.github.keilith_l.eksanos', 'vala', 'c')
+project('com.github.eksanos.eksanos', 'vala', 'c')
 
 gnome = import('gnome')
 
@@ -39,9 +39,9 @@ install_data(
 )
 
 install_data(
-	'data' / 'eksanos.appdata.xml',
+	'data' / 'eksanos.metainfo.xml',
 	install_dir: get_option('datadir') / 'metainfo',
-	rename: meson.project_name() + '.appdata.xml'
+	rename: meson.project_name() + '.metainfo.xml'
 )
 
 icon_sizes = ['16', '24', '32', '48', '64', '128']

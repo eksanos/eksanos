@@ -1,10 +1,14 @@
+/*
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2022 Justin Lahman <justinlahmanCS@gmail.com>
+ */
 namespace Eksanos{
 	public class Application : Gtk.Application {
 		public MainWindow app_window;
 
 		public Application () {
 			Object (
-				application_id: "com.github.keilith-l.eksanos",
+				application_id: "com.github.eksanos.eksanos",
 				flags: ApplicationFlags.FLAGS_NONE
 			);
 		}
