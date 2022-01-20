@@ -58,7 +58,7 @@
 	</content_rating>
 
 	<releases>
-		<release version="1.0.2" date="2022-01-20" urgency="low">
+		<release version="1.0.4" date="2022-01-20" urgency="low">
 			<description>
 				<p>Initail release of Eksanos!</p>
 			</description>
