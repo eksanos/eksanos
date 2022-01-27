@@ -1,4 +1,7 @@
-# Eksanos
+# Eksanos 
+
+[![Get it on AppCenter](https://appcenter.elementary.io/badge.svg)](https://appcenter.elementary.io/com.github.eksanos.eksanos)
+
 A simple TicTacToe app made for elementary OS.
 
 ![Screenshot of the app](https://raw.githubusercontent.com/eksanos/eksanos/main/data/screenshots/eksanos_banana.png)
