@@ -11,10 +11,10 @@ namespace Eksanos.Controllers {
 			game_screen = new Widgets.GameScreen (window);
 
 			game_screen.board_tile_clicked.connect (on_board_tile_clicked);
-			game_screen.new_game_clicked.connect (on_new_game_clicked);
+			game_screen.new_game_requested.connect (on_new_game_requested);
 		}
 
-		public Gtk.Box get_game_screen () {
+		public Widgets.GameScreen get_game_screen () {
 			return game_screen;
 		}
 
@@ -80,7 +80,7 @@ namespace Eksanos.Controllers {
 			game_model.human_place_marker (position);
 		}
 
-		private void on_new_game_clicked () {
+		private void on_new_game_requested () {
 			game_model.start_new_match ();
 		}
 	}

@@ -11,7 +11,8 @@ namespace Eksanos.Widgets {
 		private Gtk.Label turn_tracker_label;
 
 		public signal void board_tile_clicked (int[] position);
-		public signal void new_game_clicked ();
+		public signal void new_game_requested ();
+		public signal void quit_game_requested ();
 
 
 		public GameScreen (Gtk.Window parent_window) {
@@ -103,10 +104,10 @@ namespace Eksanos.Widgets {
 				match_over_dialog.destroy ();
 			} else if (response_id == Gtk.ResponseType.ACCEPT) {
 				match_over_dialog.destroy ();
-				new_game_clicked ();
+				new_game_requested ();
 			} else if (response_id == Gtk.ResponseType.CLOSE) {
 				match_over_dialog.destroy ();
-				//quit_game_requested ();
+				quit_game_requested ();
 			}
 		}
 
@@ -129,7 +130,7 @@ namespace Eksanos.Widgets {
 		}
 
 		private void on_new_match_clicked () {
-			new_game_clicked ();
+			new_game_requested ();
 		}
 
 		private void on_board_cell_selected (int[] position) {
