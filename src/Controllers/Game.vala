@@ -2,12 +2,12 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  * SPDX-FileCopyrightText: 2022 Justin Lahman <justinlahmanCS@gmail.com>
  */
-namespace Eksanos {
-	internal class GameController : GLib.Object {
+namespace Eksanos.Controllers {
+	internal class Game : GLib.Object {
 		private Widgets.GameScreen game_screen;
 		private Model.Game game_model;
 
-		public GameController () {
+		public Game () {
 			game_screen = new Widgets.GameScreen ();
 
 			game_screen.board_tile_clicked.connect (on_board_tile_clicked);

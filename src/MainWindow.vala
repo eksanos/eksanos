@@ -4,7 +4,7 @@
  */
 namespace Eksanos {
 	public class MainWindow : Hdy.ApplicationWindow {
-		private GameController game_controller;
+		private Controllers.Game game_controller;
 		private MainMenu main_menu;
 		private Hdy.HeaderBar header_bar;
 		private Hdy.Deck deck;
@@ -29,7 +29,7 @@ namespace Eksanos {
 			nav_button.set_visible (false);
 			nav_button.set_can_focus (false);
 
-			game_controller = new GameController ();
+			game_controller = new Controllers.Game ();
 			main_menu = new MainMenu ();
 
 			setup_header_bar ();
