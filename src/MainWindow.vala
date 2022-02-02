@@ -33,6 +33,10 @@ namespace Eksanos {
 			main_menu = new MainMenu ();
 
 			game_controller.get_game_screen ().quit_game_requested.connect (on_quit_game_requested);
+			game_controller.get_game_screen ().back_to_main_menu_requested.connect (() => {
+				deck.set_visible_child (main_menu.get_menu_screen ());
+				nav_button.set_visible (false);
+			});
 
 			setup_header_bar ();
 			setup_deck ();

@@ -13,6 +13,7 @@ namespace Eksanos.Widgets {
 		public signal void board_tile_clicked (int[] position);
 		public signal void new_game_requested ();
 		public signal void quit_game_requested ();
+		public signal void back_to_main_menu_requested ();
 
 
 		public GameScreen (Gtk.Window parent_window) {
@@ -102,6 +103,7 @@ namespace Eksanos.Widgets {
 			int response_id = match_over_dialog.run ();
 			if (response_id == Gtk.ResponseType.CANCEL) {
 				match_over_dialog.destroy ();
+				back_to_main_menu_requested ();
 			} else if (response_id == Gtk.ResponseType.ACCEPT) {
 				match_over_dialog.destroy ();
 				new_game_requested ();

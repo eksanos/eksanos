@@ -23,17 +23,12 @@ namespace Eksanos.Widgets {
 					break;
 			}
 			base.with_image_from_icon_name (primary_message, secondary_message, icon_name, Gtk.ButtonsType.NONE);
-			add_button ("Quit Eksanos", Gtk.ResponseType.CLOSE);
+			add_button ("Quit Eksanos", Gtk.ResponseType.CLOSE).get_style_context ().add_class(Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 			add_button ("Main Menu", Gtk.ResponseType.CANCEL);
-			add_button ("New Match", Gtk.ResponseType.ACCEPT);
+			add_button ("New Match", Gtk.ResponseType.ACCEPT).get_style_context ().add_class(Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+
 			set_default_response(Gtk.ResponseType.ACCEPT);
 		}
 
-	}
-
-	public enum MatchResults {
-		MATCH_DRAW,
-		MATCH_PLAYER_ONE_WON,
-		MATCH_PLAYER_TWO_WON
 	}
 }
