@@ -45,4 +45,10 @@ namespace Eksanos{
 			return new Application ().run (args);
 		}
 	}
+
+	public enum MatchResults {
+		MATCH_DRAW,
+		MATCH_PLAYER_ONE_WON,
+		MATCH_PLAYER_TWO_WON
+	}
 }

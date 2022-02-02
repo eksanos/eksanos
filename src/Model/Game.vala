@@ -16,7 +16,7 @@ namespace Eksanos.Model {
 		public signal void player_turn_ended (string player_name);
 		public signal void board_updated (string[,] board_state);
 		public signal void marker_placed (int[] position, string marker);
-		public signal void match_completed (string result);
+		public signal void match_completed (int result);
 		public signal void new_match_ready (string starting_player);
 		public signal void player_won (string player_name);
 		public signal void player_lost (string player_name);
@@ -75,7 +75,13 @@ namespace Eksanos.Model {
 				player_score_updated (current_player->get_name (), current_player->get_score ());
 
 				current_state = "match_finished";
-				match_completed ("victory");
+
+				if (current_player == player_one) {
+					match_completed(MatchResults.MATCH_PLAYER_ONE_WON);
+				} else {
+					match_completed(MatchResults.MATCH_PLAYER_TWO_WON);
+				}
+
 				player_won (current_player->get_name ());
 				player_lost (get_waiting_player().get_name ());
 			} else {
@@ -85,7 +91,7 @@ namespace Eksanos.Model {
 					swap_current_player ();
 					player_turn_started (current_player->get_name ());
 				} else {
-					match_completed ("draw");
+					match_completed (MatchResults.MATCH_DRAW);
 				}
 			}
 

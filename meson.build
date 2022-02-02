@@ -20,6 +20,7 @@ executable(
 	'src'/'Model'/'Board.vala',
 	'src'/'Model'/'Tile.vala',
 	'src'/'Widgets'/'GameScreen.vala',
+	'src'/'Widgets'/'Dialogs'/'MatchOverDialog.vala',
 	'src'/'Widgets'/'PlayerInfoBox.vala',
 	'src'/'Widgets'/'TileButton.vala',
 	'src'/'Widgets'/'BoardGrid.vala',

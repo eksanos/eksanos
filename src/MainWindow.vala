@@ -4,7 +4,7 @@
  */
 namespace Eksanos {
 	public class MainWindow : Hdy.ApplicationWindow {
-		private GameController game_controller;
+		private Controllers.Game game_controller;
 		private MainMenu main_menu;
 		private Hdy.HeaderBar header_bar;
 		private Hdy.Deck deck;
@@ -29,8 +29,14 @@ namespace Eksanos {
 			nav_button.set_visible (false);
 			nav_button.set_can_focus (false);
 
-			game_controller = new GameController ();
+			game_controller = new Controllers.Game (this);
 			main_menu = new MainMenu ();
+
+			game_controller.get_game_screen ().quit_game_requested.connect (on_quit_game_requested);
+			game_controller.get_game_screen ().back_to_main_menu_requested.connect (() => {
+				deck.set_visible_child (main_menu.get_menu_screen ());
+				nav_button.set_visible (false);
+			});
 
 			setup_header_bar ();
 			setup_deck ();
@@ -71,6 +77,10 @@ namespace Eksanos {
 				deck.set_visible_child (main_menu.get_menu_screen ());
 				nav_button.set_visible (false);
 			});
+		}
+
+		private void on_quit_game_requested () {
+			application.quit ();
 		}
 	}
 }

@@ -2,19 +2,19 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  * SPDX-FileCopyrightText: 2022 Justin Lahman <justinlahmanCS@gmail.com>
  */
-namespace Eksanos {
-	internal class GameController : GLib.Object {
+namespace Eksanos.Controllers {
+	internal class Game : GLib.Object {
 		private Widgets.GameScreen game_screen;
 		private Model.Game game_model;
 
-		public GameController () {
-			game_screen = new Widgets.GameScreen ();
+		public Game (Gtk.Window window) {
+			game_screen = new Widgets.GameScreen (window);
 
 			game_screen.board_tile_clicked.connect (on_board_tile_clicked);
-			game_screen.new_game_clicked.connect (on_new_game_clicked);
+			game_screen.new_game_requested.connect (on_new_game_requested);
 		}
 
-		public Gtk.Box get_game_screen () {
+		public Widgets.GameScreen get_game_screen () {
 			return game_screen;
 		}
 
@@ -58,8 +58,9 @@ namespace Eksanos {
 			return;
 		}
 
-		private void on_match_completed (string result) {
+		private void on_match_completed (int result) {
 			game_screen.disable_board ();
+			game_screen.show_match_over_dialog(result);
 		}
 
 		private void on_board_updated (string[,] board_state) {
@@ -79,7 +80,7 @@ namespace Eksanos {
 			game_model.human_place_marker (position);
 		}
 
-		private void on_new_game_clicked () {
+		private void on_new_game_requested () {
 			game_model.start_new_match ();
 		}
 	}

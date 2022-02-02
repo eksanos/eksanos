@@ -4,16 +4,20 @@
  */
 namespace Eksanos.Widgets {
 	internal class GameScreen : Gtk.Box {
+		private Gtk.Window parent_window;
 		private Widgets.PlayerInfoBox player_one_info_box;
 		private Widgets.PlayerInfoBox player_two_info_box;
 		private Widgets.BoardGrid board_grid;
 		private Gtk.Label turn_tracker_label;
 
 		public signal void board_tile_clicked (int[] position);
-		public signal void new_game_clicked ();
+		public signal void new_game_requested ();
+		public signal void quit_game_requested ();
+		public signal void back_to_main_menu_requested ();
 
 
-		public GameScreen () {
+		public GameScreen (Gtk.Window parent_window) {
+			this.parent_window = parent_window;
 			orientation = Gtk.Orientation.HORIZONTAL;
 			player_one_info_box = new Widgets.PlayerInfoBox ("Player 1", 4);
 			player_two_info_box = new Widgets.PlayerInfoBox ("Player 2", 4);
@@ -88,6 +92,27 @@ namespace Eksanos.Widgets {
 			board_grid.update_marker_color (color_name);
 		}
 
+		public void show_match_over_dialog (int result) {
+			string player1_name = player_one_info_box.get_player_name();
+			string player2_name = player_two_info_box.get_player_name();
+
+			Widgets.MatchOverDialog match_over_dialog = new Widgets.MatchOverDialog (result, player1_name, player2_name);
+
+			match_over_dialog.transient_for = parent_window;
+
+			int response_id = match_over_dialog.run ();
+			if (response_id == Gtk.ResponseType.CANCEL) {
+				match_over_dialog.destroy ();
+				back_to_main_menu_requested ();
+			} else if (response_id == Gtk.ResponseType.ACCEPT) {
+				match_over_dialog.destroy ();
+				new_game_requested ();
+			} else if (response_id == Gtk.ResponseType.CLOSE) {
+				match_over_dialog.destroy ();
+				quit_game_requested ();
+			}
+		}
+
 		private void setup_game_screen () {
 			Gtk.Frame board_frame = new Gtk.Frame (null);
 			board_frame.add (board_grid);
@@ -107,7 +132,7 @@ namespace Eksanos.Widgets {
 		}
 
 		private void on_new_match_clicked () {
-			new_game_clicked ();
+			new_game_requested ();
 		}
 
 		private void on_board_cell_selected (int[] position) {
