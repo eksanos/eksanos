@@ -7,8 +7,8 @@ namespace Eksanos.Controllers {
 		private Widgets.GameScreen game_screen;
 		private Model.Game game_model;
 
-		public Game () {
-			game_screen = new Widgets.GameScreen ();
+		public Game (Gtk.Window window) {
+			game_screen = new Widgets.GameScreen (window);
 
 			game_screen.board_tile_clicked.connect (on_board_tile_clicked);
 			game_screen.new_game_clicked.connect (on_new_game_clicked);
@@ -58,8 +58,9 @@ namespace Eksanos.Controllers {
 			return;
 		}
 
-		private void on_match_completed (string result) {
+		private void on_match_completed (int result) {
 			game_screen.disable_board ();
+			game_screen.show_match_over_dialog(result);
 		}
 
 		private void on_board_updated (string[,] board_state) {

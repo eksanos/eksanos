@@ -29,7 +29,7 @@ namespace Eksanos {
 			nav_button.set_visible (false);
 			nav_button.set_can_focus (false);
 
-			game_controller = new Controllers.Game ();
+			game_controller = new Controllers.Game (this);
 			main_menu = new MainMenu ();
 
 			setup_header_bar ();
