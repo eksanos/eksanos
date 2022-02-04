@@ -25,6 +25,7 @@ executable(
 	'src'/'Widgets'/'TileButton.vala',
 	'src'/'Widgets'/'BoardGrid.vala',
 	'src'/'Widgets'/'ColorDropDown.vala',
+	'src'/'Widgets'/'TurnTrackerStack.vala',
 	dependencies: [
 		dependency('libhandy-1', version: '>=0.91.0'),
 		dependency('granite'),

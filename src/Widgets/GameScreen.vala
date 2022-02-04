@@ -8,7 +8,7 @@ namespace Eksanos.Widgets {
 		private Widgets.PlayerInfoBox player_one_info_box;
 		private Widgets.PlayerInfoBox player_two_info_box;
 		private Widgets.BoardGrid board_grid;
-		private Gtk.Label turn_tracker_label;
+		private Widgets.TurnTrackerStack turn_tracker_stack;
 
 		public signal void board_tile_clicked (int[] position);
 		public signal void new_game_requested ();
@@ -36,7 +36,7 @@ namespace Eksanos.Widgets {
 			player_two_info_box.update_player_name ("Player 2");
 			player_two_info_box.update_score_label (0);
 			player_two_info_box.disable ();
-			turn_tracker_label.set_label ("Player 1's Turn");
+			turn_tracker_stack.add_turn_text ("Player 1's Turn");
 		}
 
 		public void update_player_names (string player_one_name, string player_two_name) {
@@ -53,7 +53,7 @@ namespace Eksanos.Widgets {
 		}
 
 		public void update_turn_label (string player_name) {
-			turn_tracker_label.set_label (player_name + "'s Turn");
+			turn_tracker_stack.add_turn_text (player_name + "'s Turn");
 		}
 
 		public void highlight_player_info (string player_name) {
@@ -120,8 +120,8 @@ namespace Eksanos.Widgets {
 			pack_start(player_one_info_box, true, false, 4);
 
 			Gtk.Box board_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 8);
-			turn_tracker_label = new Gtk.Label ("Player 1" + "'s Turn");
-			board_box.pack_start (turn_tracker_label, false, false, 4);
+			turn_tracker_stack = new TurnTrackerStack ("Player 1" + "'s Turn");
+			board_box.pack_start (turn_tracker_stack, false, false, 4);
 			board_box.pack_start (board_frame, true, false, 0);
 			Gtk.Button reset_button = new Gtk.Button.with_label ("New Game");
 			reset_button.clicked.connect (on_new_match_clicked);
