@@ -12,7 +12,10 @@ namespace Eksanos.Widgets {
 		public BoardGrid (string empty_tile_marker) {
 			this.empty_tile_marker = empty_tile_marker;
 			tile_buttons = new TileButton[3,3];
-			set_size_request (360,360);
+			set_size_request (330,330);
+			get_style_context ().add_class (Granite.STYLE_CLASS_CARD);
+			get_style_context ().add_class (Granite.STYLE_CLASS_ROUNDED);
+
 			init_board (empty_tile_marker);
 		}
 

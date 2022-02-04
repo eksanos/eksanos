@@ -19,8 +19,8 @@ namespace Eksanos.Widgets {
 			cross_res_path = "/com/github/eksanos/eksanos/cross_banana.png";
 			set_relief (Gtk.ReliefStyle.NONE);
 			expand = true;
-			margin = 8;
-			set_size_request (112, 112);
+			margin = 0;
+			set_size_request (108, 108);
 			set_can_focus (false);
 			clicked.connect(on_tile_clicked);
 		}

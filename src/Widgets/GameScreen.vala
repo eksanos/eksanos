@@ -18,7 +18,7 @@ namespace Eksanos.Widgets {
 
 		public GameScreen (Gtk.Window parent_window) {
 			this.parent_window = parent_window;
-			orientation = Gtk.Orientation.HORIZONTAL;
+			orientation = Gtk.Orientation.VERTICAL;
 			player_one_info_box = new Widgets.PlayerInfoBox ("Player 1", 4);
 			player_two_info_box = new Widgets.PlayerInfoBox ("Player 2", 4);
 			board_grid = new Widgets.BoardGrid (" ");
@@ -114,21 +114,30 @@ namespace Eksanos.Widgets {
 		}
 
 		private void setup_game_screen () {
+			set_margin_start(12);
+			set_margin_end(12);
+
 			Gtk.Frame board_frame = new Gtk.Frame (null);
+			turn_tracker_stack = new TurnTrackerStack ("Player 1" + "'s Turn");
+
 			board_frame.add (board_grid);
 
-			pack_start(player_one_info_box, true, false, 4);
 
+			Gtk.Box player_info = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
+			player_info.pack_start(player_one_info_box, true, false, 4);
+
+			player_info.pack_start (player_two_info_box, true, false, 4);
+
+			pack_start (turn_tracker_stack, false, false, 4);
+
+			pack_start (player_info, false, false, 0);
 			Gtk.Box board_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 8);
-			turn_tracker_stack = new TurnTrackerStack ("Player 1" + "'s Turn");
-			board_box.pack_start (turn_tracker_stack, false, false, 4);
 			board_box.pack_start (board_frame, true, false, 0);
 			Gtk.Button reset_button = new Gtk.Button.with_label ("New Game");
 			reset_button.clicked.connect (on_new_match_clicked);
 			board_box.pack_end (reset_button, false, false, 4);
 			pack_start (board_box, false, false, 0);
 
-			pack_start (player_two_info_box, true, false, 4);
 		}
 
 		private void on_new_match_clicked () {

@@ -9,11 +9,17 @@ namespace Eksanos.Widgets {
 
 		public PlayerInfoBox (string player_name, int spacing) {
 			orientation = Gtk.Orientation.VERTICAL;
+			get_style_context ().add_class (Granite.STYLE_CLASS_CARD);
+			get_style_context ().add_class (Granite.STYLE_CLASS_ROUNDED);
+
 
 			player_name_label = new Gtk.Label (player_name);
+			player_name_label.margin = 4;
 			player_score_label = new Gtk.Label ("Matches Won: 0");
+			player_score_label.margin = 4;
 
 			pack_start (player_name_label, false, false, 12);
+			pack_start (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
 			pack_start (player_score_label, false, false, 2);
 
 			set_spacing(spacing);

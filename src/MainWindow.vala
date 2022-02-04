@@ -14,8 +14,8 @@ namespace Eksanos {
 			Object (
 				application: eksanos_app,
 				title: "Eksanos",
-				default_height: 480,
-				default_width: 640,
+				default_height: 640,
+				default_width: 360,
 				resizable: false
 			);
 		}
@@ -25,7 +25,8 @@ namespace Eksanos {
 			var global_grid = new Gtk.Grid ();
 			global_grid.orientation = Gtk.Orientation.VERTICAL;
 
-			nav_button = new Gtk.Button.with_label ("Main Menu");
+			nav_button = new Gtk.Button.with_label ("Menu");
+			nav_button.get_style_context ().add_class (Granite.STYLE_CLASS_BACK_BUTTON);
 			nav_button.set_visible (false);
 			nav_button.set_can_focus (false);
 
@@ -54,6 +55,12 @@ namespace Eksanos {
 				show_close_button = true,
 				title = "Eksanos"
 			};
+
+			var title = new Gtk.Label ("Eksanos");
+			title.get_style_context ().add_class(Granite.STYLE_CLASS_ACCENT);
+			title.get_style_context ().add_class(Granite.STYLE_CLASS_H3_LABEL);
+
+			header_bar.set_custom_title (title);
 
 			header_bar.pack_start (nav_button);
 		}
