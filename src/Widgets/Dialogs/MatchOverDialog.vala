@@ -18,7 +18,7 @@ namespace Eksanos.Widgets {
 					break;
 				case MatchResults.MATCH_PLAYER_TWO_WON:
 					icon_name = "dialog-information";
-					primary_message = player_two_name + "WON!";
+					primary_message = player_two_name + " WON!";
 					secondary_message = "Congratulations " + player_two_name + "!";
 					break;
 			}
