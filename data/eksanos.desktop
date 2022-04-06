@@ -2,7 +2,7 @@
 Name=Eksanos
 GenericName=TicTacToe;
 Comment=A TicTacToe Game
-Categories=Game;Utility;
+Categories=Game;
 Exec=com.github.eksanos.eksanos
 Icon=com.github.eksanos.eksanos
 Terminal=false
