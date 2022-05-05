@@ -6,6 +6,7 @@
 	<name>Eksanos</name>
 	<summary>A simple TicTacToe app</summary>
 	<description><p>Play the classic game of Naughts and Crosses by yourself or with a friend!</p></description>
+	<project_license>GPL-3.0-or-later</project_license>
 
 	<launchable type="desktop-id">com.github.eksanos.eksanos.desktop</launchable>
 
