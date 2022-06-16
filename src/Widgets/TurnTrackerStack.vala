@@ -51,7 +51,7 @@ namespace Eksanos.Widgets {
 				return;
 			};
 
-			new Thread<void>("label_transition", run);
+			new Thread<void>("label_transition",(owned) run);
 			yield;
 			return;
 		}
