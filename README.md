@@ -22,6 +22,10 @@ Build and install it as a Flatpak by running the following command:
 
 `flatpak-builder build com.github.eksanos.eksanos.yml --user --install --force-clean`
 
+Make sure you have the elementary sdk installed, if you don't already. Release 1.1.0 and below use the 6.1 SDK. Releases greater than 1.1.0 will use the 7 SDK. 
+
+`flatpak install io.elementary.Sdk`
+
 ### Via Meson
 First in the project's root directory, run:
 
