@@ -27,9 +27,8 @@ executable(
 	'src'/'Widgets'/'ColorDropDown.vala',
 	'src'/'Widgets'/'TurnTrackerStack.vala',
 	dependencies: [
-		dependency('libhandy-1', version: '>=0.91.0'),
-		dependency('granite'),
-		dependency('gtk+-3.0')
+		dependency('granite-7', version: '>=7.0.0'),
+		dependency('gtk4')
 	],
 	install: true
 )
