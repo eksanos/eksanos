@@ -26,7 +26,7 @@ namespace Eksanos {
 			global_grid.orientation = Gtk.Orientation.VERTICAL;
 
 			nav_button = new Gtk.Button.with_label ("Menu");
-			nav_button.get_style_context ().add_class (Granite.STYLE_CLASS_BACK_BUTTON);
+			nav_button.add_css_class (Granite.STYLE_CLASS_BACK_BUTTON);
 			nav_button.set_valign (Gtk.Align.CENTER);
 			nav_button.set_visible (true);
 			nav_button.set_can_focus (false);
@@ -57,8 +57,8 @@ namespace Eksanos {
 			header_bar.add_css_class (Granite.STYLE_CLASS_DEFAULT_DECORATION);
 			
 			var title = new Gtk.Label ("Eksanos");
-			title.get_style_context ().add_class(Granite.STYLE_CLASS_ACCENT);
-			title.get_style_context ().add_class(Granite.STYLE_CLASS_H3_LABEL);
+			title.add_css_class(Granite.STYLE_CLASS_ACCENT);
+			title.add_css_class(Granite.STYLE_CLASS_H3_LABEL);
 
 			header_bar.set_title_widget (title);
 			header_bar.pack_start (nav_button);
