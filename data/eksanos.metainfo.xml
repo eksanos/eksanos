@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright Justin Lahman <github.com/jlahman> -->
 <component type="desktop-application">
-	<id>com.github.eksanos.eksanos</id>
+	<id>com.github.eksanos.eksanos-gtk4</id>
 	<metadata_license>CC0</metadata_license>
 	<name>Eksanos</name>
 	<summary>A simple TicTacToe app</summary>
 	<description><p>Play the classic game of Naughts and Crosses by yourself or with a friend!</p></description>
 	<project_license>GPL-3.0-or-later</project_license>
 
-	<launchable type="desktop-id">com.github.eksanos.eksanos.desktop</launchable>
+	<launchable type="desktop-id">com.github.eksanos.eksanos-gtk4.desktop</launchable>
 
 	<developer_name>Justin Lahman</developer_name>
 

@@ -3,7 +3,7 @@
  * SPDX-FileCopyrightText: 2022 Justin Lahman <justinlahmanCS@gmail.com>
  */
 namespace Eksanos {
-	public class MainWindow : Gtk.ApplicationWindow {
+	public class MainWindow : Adw.ApplicationWindow {
 		//private Controllers.Game game_controller;
 		//private MainMenu main_menu;
 		private Gtk.HeaderBar header_bar;
@@ -21,12 +21,13 @@ namespace Eksanos {
 		}
 
 		construct {
-			Adw.init ();
+			//Adw.init ();
 			var global_grid = new Gtk.Grid ();
 			global_grid.orientation = Gtk.Orientation.VERTICAL;
 
 			nav_button = new Gtk.Button.with_label ("Menu");
 			nav_button.get_style_context ().add_class (Granite.STYLE_CLASS_BACK_BUTTON);
+			nav_button.set_valign (Gtk.Align.CENTER);
 			nav_button.set_visible (true);
 			nav_button.set_can_focus (false);
 
@@ -45,7 +46,7 @@ namespace Eksanos {
 
 			global_grid.attach (header_bar, 0, 0);
 			global_grid.attach (leaflet, 0, 1);
-			set_child (global_grid);
+			set_content (global_grid);
 		}
 
 		private void setup_header_bar () {
@@ -57,6 +58,8 @@ namespace Eksanos {
 			};
 
 			var title = new Gtk.Label ("Eksanos");
+			title.set_margin_top (12);
+			title.set_margin_bottom (12);
 			title.get_style_context ().add_class(Granite.STYLE_CLASS_ACCENT);
 			title.get_style_context ().add_class(Granite.STYLE_CLASS_H3_LABEL);
 
