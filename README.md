@@ -11,9 +11,9 @@ A simple TicTacToe app made for elementary OS.
 ### Dependencies
 Eksanos requires the following:
 * glib-2.0
-* gtk3+-3.0
-* granite
-* libhandy-1-dev >= 0.91.0
+* gtk4
+* granite-7
+* libadwaita-1 >= 1.0.0
 * meson
 * valac
 
