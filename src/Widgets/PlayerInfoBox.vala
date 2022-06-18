@@ -11,6 +11,7 @@ namespace Eksanos.Widgets {
 			orientation = Gtk.Orientation.VERTICAL;
 			add_css_class (Granite.STYLE_CLASS_CARD);
 			add_css_class (Granite.STYLE_CLASS_ROUNDED);
+			set_hexpand (true);
 
 
 			player_name_label = new Gtk.Label (player_name);
