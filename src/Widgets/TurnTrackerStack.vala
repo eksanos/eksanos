@@ -20,7 +20,7 @@ namespace Eksanos.Widgets {
 			turn_label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
 			empty_label = new Gtk.Label ("");
 			stack.transition_type = Gtk.StackTransitionType.SLIDE_UP;
-			stack.transition_duration =150;
+			stack.transition_duration = 150;
 
 			set_vexpand (true);
 			set_hexpand (true);

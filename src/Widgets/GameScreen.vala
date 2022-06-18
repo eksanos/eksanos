@@ -15,7 +15,6 @@ namespace Eksanos.Widgets {
 		public signal void quit_game_requested ();
 		public signal void back_to_main_menu_requested ();
 
-
 		public GameScreen (Gtk.Window parent_window) {
 			this.parent_window = parent_window;
 			orientation = Gtk.Orientation.VERTICAL;

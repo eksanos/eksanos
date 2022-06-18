@@ -33,7 +33,7 @@ namespace Eksanos.Widgets {
 		}
 
 		public void update_marker_color (string color_name) {
-			string path = "/com/github/eksanos/eksanos-gtk4/";
+			string path = "/com/github/eksanos/eksanos/";
 			for (int r = 0; r < 3; ++r){
 				for (int c = 0; c < 3; ++c){
 					tile_buttons[c,r].update_color_path (path, color_name);
