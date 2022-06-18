@@ -84,7 +84,6 @@ namespace Eksanos {
 			color_drop_down = new Widgets.ColorDropDown ();
 			color_drop_down.set_halign (Gtk.Align.START);
 
-
 			Gtk.Label menu_title = new Gtk.Label ("A TicTacToe Game");
 			menu_title.get_style_context ().add_class(Granite.STYLE_CLASS_H2_LABEL);
 			menu_title.set_valign (Gtk.Align.CENTER);
@@ -102,8 +101,11 @@ namespace Eksanos {
 			menu_box.append (play_box);
 
 			main_menu_screen.append (menu_box); 
-			start_game_button.grab_focus ();
 			start_game_button.clicked.connect (on_start_game_clicked);
+		}
+
+		public Gtk.Widget get_default_widget () {
+			return start_game_button;
 		}
 
 		public Gtk.Box get_menu_screen () {

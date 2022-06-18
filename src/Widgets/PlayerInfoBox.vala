@@ -19,9 +19,9 @@ namespace Eksanos.Widgets {
 			player_score_label = new Gtk.Label ("Matches Won: 0");
 			player_score_label.set_margin_bottom (4);
 
-			append (player_name_label); //, false, false, 12);
+			append (player_name_label);
 			append (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
-			append (player_score_label); //, false, false, 2);
+			append (player_score_label);
 
 			set_spacing(spacing);
 		}

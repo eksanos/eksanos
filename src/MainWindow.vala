@@ -27,7 +27,7 @@ namespace Eksanos {
 			nav_button = new Gtk.Button.with_label ("Menu");
 			nav_button.add_css_class (Granite.STYLE_CLASS_BACK_BUTTON);
 			nav_button.set_valign (Gtk.Align.CENTER);
-			nav_button.set_visible (true);
+			nav_button.set_visible (false);
 			nav_button.set_can_focus (false);
 
 			game_controller = new Controllers.Game (this);
@@ -46,6 +46,7 @@ namespace Eksanos {
 			set_titlebar (header_bar);
 			global_grid.attach (leaflet, 0, 0);
 			set_child (global_grid);
+			set_focus (main_menu.get_default_widget ());
 		}
 
 		private void setup_header_bar () {
