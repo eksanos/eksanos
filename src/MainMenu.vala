@@ -16,7 +16,7 @@ namespace Eksanos {
 		private Gtk.Button start_game_button;
 
 		private Gtk.Switch single_player_mode_switch;
-		//private Widgets.ColorDropDown color_drop_down;
+		private Widgets.ColorDropDown color_drop_down;
 
 		private string player_one_name;
 		private string player_two_name;
@@ -81,8 +81,8 @@ namespace Eksanos {
 			single_player_option.append (single_player_mode_switch);
 			single_player_option.set_halign (Gtk.Align.START);
 
-			//color_drop_down = new Widgets.ColorDropDown ();
-			//color_drop_down.set_halign (Gtk.Align.START);
+			color_drop_down = new Widgets.ColorDropDown ();
+			color_drop_down.set_halign (Gtk.Align.START);
 
 
 			Gtk.Label menu_title = new Gtk.Label ("A TicTacToe Game");
@@ -93,7 +93,7 @@ namespace Eksanos {
 			options_box.append (player_one_name_box);
 			options_box.append (player_two_name_box);
 			options_box.append (single_player_option);
-			//menu_box.pack_start (color_drop_down, false, false, 0);
+			options_box.append (color_drop_down);
 
 			play_box.append (start_game_button);
 

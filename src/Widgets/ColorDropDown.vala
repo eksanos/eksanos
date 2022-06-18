@@ -35,8 +35,8 @@ namespace Eksanos.Widgets {
 
 			combo_box.set_active (0);
 
-			add(label);
-			add(combo_box);
+			append(label);
+			append(combo_box);
 		}
 
 		public string get_color_selected () {
