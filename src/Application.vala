@@ -8,7 +8,7 @@ namespace Eksanos{
 
 		public Application () {
 			Object (
-				application_id: "com.github.eksanos.eksanos",
+				application_id: "com.github.eksanos.eksanos-gtk4",
 				flags: ApplicationFlags.FLAGS_NONE
 			);
 		}
@@ -24,7 +24,7 @@ namespace Eksanos{
 
 			app_window = new MainWindow (this);
 
-			app_window.show_all ();
+			app_window.present ();
 		}
 
 		private void setup_color_preference () {
@@ -38,7 +38,9 @@ namespace Eksanos{
 		}
 
 		private void setup_custom_resources () {
-			Gtk.IconTheme.get_default ().add_resource_path("/com/github/eksanos/eksanos");
+			var display = Gdk.Display.get_default ();
+			var icon_theme = Gtk.IconTheme.get_for_display (display);
+			icon_theme.add_resource_path ("/com/github/eksanos/eksanos-gtk4");
 		}
 
 		public static int main (string[] args) {

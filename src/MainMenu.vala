@@ -26,8 +26,28 @@ namespace Eksanos {
 		public MainMenu () {
 			main_menu_screen = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
 			main_menu_screen.set_hexpand (true);
+			main_menu_screen.set_margin_start (24);
+			main_menu_screen.set_margin_end (24);
+			main_menu_screen.set_margin_top (24);
+			main_menu_screen.set_margin_bottom (24);
+
 			menu_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 12);
 			menu_box.set_vexpand (true);
+			menu_box.set_margin_start (12);
+			menu_box.set_margin_end (12);
+			menu_box.set_valign (Gtk.Align.FILL);
+
+			Gtk.Box title_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 12);
+			title_box.set_valign (Gtk.Align.CENTER);
+			title_box.set_vexpand (true);
+			Gtk.Box options_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 12);
+			options_box.set_valign (Gtk.Align.CENTER);
+			options_box.set_vexpand (true);
+			options_box.set_margin_start (12);
+			options_box.set_margin_end (12);
+			Gtk.Box play_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 12);
+			play_box.set_valign (Gtk.Align.CENTER);
+			play_box.set_vexpand (true);
 
 			Gtk.Box player_one_name_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
 			Gtk.Box player_two_name_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
@@ -45,10 +65,10 @@ namespace Eksanos {
 			player_one_name_entry.set_hexpand (true);
 			player_two_name_entry.set_hexpand (true);
 
-			player_one_name_box.pack_start (player_one_name_entry_label, false, false, 0);
-			player_two_name_box.pack_start (player_two_name_entry_label, false, false, 0);
-			player_one_name_box.pack_start (player_one_name_entry, false, false, 0);
-			player_two_name_box.pack_start (player_two_name_entry, false, false, 0);
+			player_one_name_box.append (player_one_name_entry_label);
+			player_two_name_box.append (player_two_name_entry_label);
+			player_one_name_box.append (player_one_name_entry);
+			player_two_name_box.append (player_two_name_entry);
 
 			start_game_button = new Gtk.Button.with_label ("Start Game");
 
@@ -57,29 +77,35 @@ namespace Eksanos {
 			single_player_mode_switch.set_active (true);
 			Gtk.Label single_player_label = new Gtk.Label ("Single Player Mode");
 			single_player_label.set_justify (Gtk.Justification.LEFT);
-			single_player_option.pack_start (single_player_label, false, false, 0);
-			single_player_option.pack_start (single_player_mode_switch, false, false, 0);
+			single_player_option.append (single_player_label);
+			single_player_option.append (single_player_mode_switch);
 			single_player_option.set_halign (Gtk.Align.START);
 
 			color_drop_down = new Widgets.ColorDropDown ();
 			color_drop_down.set_halign (Gtk.Align.START);
 
-
 			Gtk.Label menu_title = new Gtk.Label ("A TicTacToe Game");
 			menu_title.get_style_context ().add_class(Granite.STYLE_CLASS_H2_LABEL);
-			menu_box.pack_start (menu_title, true, true, 0);
+			menu_title.set_valign (Gtk.Align.CENTER);
 
-			menu_box.pack_start (player_one_name_box, false, true, 0);
-			menu_box.pack_start (player_two_name_box, false, false, 0);
-			menu_box.pack_start (single_player_option, false, false, 0);
-			menu_box.pack_start (color_drop_down, false, false, 0);
+			title_box.append (menu_title);
+			options_box.append (player_one_name_box);
+			options_box.append (player_two_name_box);
+			options_box.append (single_player_option);
+			options_box.append (color_drop_down);
 
-			menu_box.pack_start (start_game_button, true, false, 0);
+			play_box.append (start_game_button);
 
-			main_menu_screen.pack_start (menu_box, true, false, 12);
+			menu_box.append (title_box);
+			menu_box.append (options_box);
+			menu_box.append (play_box);
 
-			start_game_button.grab_focus ();
+			main_menu_screen.append (menu_box); 
 			start_game_button.clicked.connect (on_start_game_clicked);
+		}
+
+		public Gtk.Widget get_default_widget () {
+			return start_game_button;
 		}
 
 		public Gtk.Box get_menu_screen () {
@@ -102,7 +128,7 @@ namespace Eksanos {
 				player_two_name += "_O";
 			}
 
-			start_game_requested (player_one_name, player_two_name, single_player_mode_switch.get_active () ,color_drop_down.get_color_selected ());
+			start_game_requested (player_one_name, player_two_name, single_player_mode_switch.get_active (), color_drop_down.get_color_selected ());
 		}
 	}
 }
