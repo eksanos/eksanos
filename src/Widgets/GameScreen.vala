@@ -126,21 +126,21 @@ namespace Eksanos.Widgets {
 
 
 			Gtk.Box player_info = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
-			player_info.append (player_one_info_box); //, true, false, 4);
-			player_info.append (player_two_info_box); //, true, false, 4);
+			player_info.append (player_one_info_box);
+			player_info.append (player_two_info_box);
 
-			append (turn_tracker_stack); //, false, false, 4);
+			append (turn_tracker_stack);
 
-			append (player_info); //, false, false, 0);
+			append (player_info); 
 			Gtk.Box board_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 8);
-			board_box.append (board_frame); //, true, false, 0);
+			board_box.append (board_frame); 
 
 			Gtk.Button reset_button = new Gtk.Button.with_label ("New Game");
 			reset_button.set_valign (Gtk.Align.CENTER);
 			reset_button.clicked.connect (on_new_match_clicked);
-			board_box.append (reset_button); //, false, false, 4);
-			
-			append (board_box); //, false, false, 0);
+			board_box.append (reset_button); 
+
+			append (board_box);
 
 		}
 
