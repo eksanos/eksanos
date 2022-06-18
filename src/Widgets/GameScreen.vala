@@ -114,8 +114,9 @@ namespace Eksanos.Widgets {
 		}
 
 		private void setup_game_screen () {
-			set_margin_start(12);
-			set_margin_end(12);
+			set_margin_start (12);
+			set_margin_end (12);
+			set_margin_bottom (12);
 
 			Gtk.Frame board_frame = new Gtk.Frame (null);
 			board_frame.set_valign (Gtk.Align.CENTER);
@@ -135,8 +136,10 @@ namespace Eksanos.Widgets {
 			board_box.append (board_frame); //, true, false, 0);
 
 			Gtk.Button reset_button = new Gtk.Button.with_label ("New Game");
+			reset_button.set_valign (Gtk.Align.CENTER);
 			reset_button.clicked.connect (on_new_match_clicked);
 			board_box.append (reset_button); //, false, false, 4);
+			
 			append (board_box); //, false, false, 0);
 
 		}

@@ -19,11 +19,9 @@ namespace Eksanos.Widgets {
 			cross_res_path = "/com/github/eksanos/eksanos-gtk4/cross_banana.png";
 			vexpand = true;
 			hexpand = true;
-			//margin = 0;
 			set_size_request (108, 108);
 			set_can_focus (false);
 			clicked.connect(on_tile_clicked);
-			//append (current_marker);
 		}
 
 		public void update_tile_marker (string marker) {
