@@ -1,22 +1,24 @@
 namespace Eksanos.Widgets {
-	internal class TurnTrackerStack : Gtk.Stack {
+	internal class TurnTrackerStack : Gtk.Widget { //Gtk.Stack {
 		private Gtk.Label turn_label;
 		private Gtk.Label empty_label;
+		private Gtk.Stack stack;
 		public TurnTrackerStack (string default_label_text) {
+			stack = new Gtk.Stack ();
 			turn_label = new Gtk.Label (default_label_text);
 			turn_label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
 			empty_label = new Gtk.Label ("");
-			transition_type = Gtk.StackTransitionType.SLIDE_UP;
-			transition_duration =150;
+			stack.transition_type = Gtk.StackTransitionType.SLIDE_UP;
+			stack.transition_duration =150;
 
 			set_vexpand (true);
 			set_hexpand (true);
 
-			add_named (turn_label, "turn_text");
-			add_named (empty_label, "no_text");
+			stack.add_named (turn_label, "turn_text");
+			stack.add_named (empty_label, "no_text");
 
 
-			visible_child_name = "turn_text";
+			stack.visible_child_name = "turn_text";
 		}
 
 
@@ -36,17 +38,17 @@ namespace Eksanos.Widgets {
 			SourceFunc callback = do_transition.callback;
 
 			ThreadFunc<void> run = () => {
-				transition_type = Gtk.StackTransitionType.SLIDE_DOWN;
-				visible_child_name = "no_text";
+				stack.transition_type = Gtk.StackTransitionType.SLIDE_DOWN;
+				stack.visible_child_name = "no_text";
 
-				while(transition_running) {
+				while(stack.transition_running) {
 
 				}
 
 				turn_label.set_text(turn_text);
 
-				transition_type = Gtk.StackTransitionType.SLIDE_UP;
-				visible_child_name = "turn_text";
+				stack.transition_type = Gtk.StackTransitionType.SLIDE_UP;
+				stack.visible_child_name = "turn_text";
 				Idle.add((owned) callback);
 				return;
 			};

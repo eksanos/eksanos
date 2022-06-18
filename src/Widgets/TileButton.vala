@@ -17,9 +17,9 @@ namespace Eksanos.Widgets {
 			this.id = id;
 			circle_res_path = "/com/github/eksanos/eksanos/circle_banana.png";
 			cross_res_path = "/com/github/eksanos/eksanos/cross_banana.png";
-			set_relief (Gtk.ReliefStyle.NONE);
-			expand = true;
-			margin = 0;
+			vexpand = true;
+			hexpand = true;
+			//margin = 0;
 			set_size_request (108, 108);
 			set_can_focus (false);
 			clicked.connect(on_tile_clicked);
@@ -28,10 +28,10 @@ namespace Eksanos.Widgets {
 		public void update_tile_marker (string marker) {
 			if (marker == "X") {
 				current_marker = new Gtk.Image.from_resource (cross_res_path);
-				set_image (current_marker);
+				//set_image (current_marker);
 			} else {
 				current_marker = new Gtk.Image.from_resource (circle_res_path);
-				set_image (current_marker);
+				//set_image (current_marker);
 			}
 		}
 
@@ -41,11 +41,15 @@ namespace Eksanos.Widgets {
 		}
 
 		public void clear_tile () {
-			set_image (null);
+			//set_image (null);
 		}
 
 		public void on_tile_clicked () {
 			tile_selected(id);
+		}
+
+		private void set_image (Gtk.Image img) {
+
 		}
 	}
 }

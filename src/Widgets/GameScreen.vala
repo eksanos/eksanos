@@ -99,8 +99,8 @@ namespace Eksanos.Widgets {
 			Widgets.MatchOverDialog match_over_dialog = new Widgets.MatchOverDialog (result, player1_name, player2_name);
 
 			match_over_dialog.transient_for = parent_window;
-
-			int response_id = match_over_dialog.run ();
+			return;
+			int response_id = 0; //match_over_dialog.run ();
 			if (response_id == Gtk.ResponseType.CANCEL) {
 				match_over_dialog.destroy ();
 				back_to_main_menu_requested ();
@@ -120,23 +120,23 @@ namespace Eksanos.Widgets {
 			Gtk.Frame board_frame = new Gtk.Frame (null);
 			turn_tracker_stack = new TurnTrackerStack ("Player 1" + "'s Turn");
 
-			board_frame.add (board_grid);
+			board_frame.set_child (board_grid);
 
 
 			Gtk.Box player_info = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
-			player_info.pack_start(player_one_info_box, true, false, 4);
+			player_info.append (player_one_info_box); //, true, false, 4);
 
-			player_info.pack_start (player_two_info_box, true, false, 4);
+			player_info.append (player_two_info_box); //, true, false, 4);
 
-			pack_start (turn_tracker_stack, false, false, 4);
+			append (turn_tracker_stack); //, false, false, 4);
 
-			pack_start (player_info, false, false, 0);
+			append (player_info); //, false, false, 0);
 			Gtk.Box board_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 8);
-			board_box.pack_start (board_frame, true, false, 0);
+			board_box.append (board_frame); //, true, false, 0);
 			Gtk.Button reset_button = new Gtk.Button.with_label ("New Game");
 			reset_button.clicked.connect (on_new_match_clicked);
-			board_box.pack_end (reset_button, false, false, 4);
-			pack_start (board_box, false, false, 0);
+			board_box.append (reset_button); //, false, false, 4);
+			append (board_box); //, false, false, 0);
 
 		}
 

@@ -34,11 +34,11 @@ namespace Eksanos {
 			game_controller = new Controllers.Game (this);
 			main_menu = new MainMenu ();
 
-			//game_controller.get_game_screen ().quit_game_requested.connect (on_quit_game_requested);
-			//game_controller.get_game_screen ().back_to_main_menu_requested.connect (() => {
-			//	leaflet.set_visible_child (main_menu.get_menu_screen ());
-		//		nav_button.set_visible (false);
-		//	});
+			game_controller.get_game_screen ().quit_game_requested.connect (on_quit_game_requested);
+			game_controller.get_game_screen ().back_to_main_menu_requested.connect (() => {
+				leaflet.set_visible_child (main_menu.get_menu_screen ());
+				nav_button.set_visible (false);
+			});
 
 			setup_header_bar ();
 			setup_leaflet ();
@@ -68,12 +68,12 @@ namespace Eksanos {
 			leaflet = new Adw.Leaflet ();
 			leaflet.set_transition_type (Adw.LeafletTransitionType.UNDER);
 			leaflet.append (main_menu.get_menu_screen ());
-			//leaflet.append (game_controller.get_game_screen ());
+			leaflet.append (game_controller.get_game_screen ());
 			leaflet.set_visible_child (main_menu.get_menu_screen ());
 		}
 
 		private void setup_connections () {
-			/*main_menu.start_game_requested.connect ((player_one_name, player_two_name, single_player_mode, color_name) => {
+			main_menu.start_game_requested.connect ((player_one_name, player_two_name, single_player_mode, color_name) => {
 				game_controller.generate_new_game (player_one_name, player_two_name, single_player_mode, color_name);
 				leaflet.set_visible_child (game_controller.get_game_screen ());
 				nav_button.set_visible (true);
@@ -82,7 +82,7 @@ namespace Eksanos {
 			nav_button.clicked.connect (() => {
 				leaflet.set_visible_child (main_menu.get_menu_screen ());
 				nav_button.set_visible (false);
-			});*/
+			});
 		}
 
 		private void on_quit_game_requested () {
