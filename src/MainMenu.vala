@@ -26,8 +26,28 @@ namespace Eksanos {
 		public MainMenu () {
 			main_menu_screen = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
 			main_menu_screen.set_hexpand (true);
+			main_menu_screen.set_margin_start (24);
+			main_menu_screen.set_margin_end (24);
+			main_menu_screen.set_margin_top (24);
+			main_menu_screen.set_margin_bottom (24);
+
 			menu_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 12);
 			menu_box.set_vexpand (true);
+			menu_box.set_margin_start (12);
+			menu_box.set_margin_end (12);
+			menu_box.set_valign (Gtk.Align.FILL);
+
+			Gtk.Box title_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 12);
+			title_box.set_valign (Gtk.Align.CENTER);
+			title_box.set_vexpand (true);
+			Gtk.Box options_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 12);
+			options_box.set_valign (Gtk.Align.CENTER);
+			options_box.set_vexpand (true);
+			options_box.set_margin_start (12);
+			options_box.set_margin_end (12);
+			Gtk.Box play_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 12);
+			play_box.set_valign (Gtk.Align.CENTER);
+			play_box.set_vexpand (true);
 
 			Gtk.Box player_one_name_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
 			Gtk.Box player_two_name_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
@@ -67,15 +87,19 @@ namespace Eksanos {
 
 			Gtk.Label menu_title = new Gtk.Label ("A TicTacToe Game");
 			menu_title.get_style_context ().add_class(Granite.STYLE_CLASS_H2_LABEL);
-			//menu_box.pack_start (menu_title, true, true, 0);
-			menu_box.append (menu_title);
+			menu_title.set_valign (Gtk.Align.CENTER);
 
-			menu_box.append (player_one_name_box);
-			menu_box.append (player_two_name_box);
-			menu_box.append (single_player_option);
+			title_box.append (menu_title);
+			options_box.append (player_one_name_box);
+			options_box.append (player_two_name_box);
+			options_box.append (single_player_option);
 			//menu_box.pack_start (color_drop_down, false, false, 0);
 
-			menu_box.append (start_game_button);
+			play_box.append (start_game_button);
+
+			menu_box.append (title_box);
+			menu_box.append (options_box);
+			menu_box.append (play_box);
 
 			main_menu_screen.append (menu_box); // true, false, 12
 
