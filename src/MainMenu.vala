@@ -16,7 +16,7 @@ namespace Eksanos {
 		private Gtk.Button start_game_button;
 
 		private Gtk.Switch single_player_mode_switch;
-		private Widgets.ColorDropDown color_drop_down;
+		//private Widgets.ColorDropDown color_drop_down;
 
 		private string player_one_name;
 		private string player_two_name;
@@ -45,10 +45,10 @@ namespace Eksanos {
 			player_one_name_entry.set_hexpand (true);
 			player_two_name_entry.set_hexpand (true);
 
-			player_one_name_box.pack_start (player_one_name_entry_label, false, false, 0);
-			player_two_name_box.pack_start (player_two_name_entry_label, false, false, 0);
-			player_one_name_box.pack_start (player_one_name_entry, false, false, 0);
-			player_two_name_box.pack_start (player_two_name_entry, false, false, 0);
+			player_one_name_box.append (player_one_name_entry_label);
+			player_two_name_box.append (player_two_name_entry_label);
+			player_one_name_box.append (player_one_name_entry);
+			player_two_name_box.append (player_two_name_entry);
 
 			start_game_button = new Gtk.Button.with_label ("Start Game");
 
@@ -57,26 +57,27 @@ namespace Eksanos {
 			single_player_mode_switch.set_active (true);
 			Gtk.Label single_player_label = new Gtk.Label ("Single Player Mode");
 			single_player_label.set_justify (Gtk.Justification.LEFT);
-			single_player_option.pack_start (single_player_label, false, false, 0);
-			single_player_option.pack_start (single_player_mode_switch, false, false, 0);
+			single_player_option.append (single_player_label);
+			single_player_option.append (single_player_mode_switch);
 			single_player_option.set_halign (Gtk.Align.START);
 
-			color_drop_down = new Widgets.ColorDropDown ();
-			color_drop_down.set_halign (Gtk.Align.START);
+			//color_drop_down = new Widgets.ColorDropDown ();
+			//color_drop_down.set_halign (Gtk.Align.START);
 
 
 			Gtk.Label menu_title = new Gtk.Label ("A TicTacToe Game");
 			menu_title.get_style_context ().add_class(Granite.STYLE_CLASS_H2_LABEL);
-			menu_box.pack_start (menu_title, true, true, 0);
+			//menu_box.pack_start (menu_title, true, true, 0);
+			menu_box.append (menu_title);
 
-			menu_box.pack_start (player_one_name_box, false, true, 0);
-			menu_box.pack_start (player_two_name_box, false, false, 0);
-			menu_box.pack_start (single_player_option, false, false, 0);
-			menu_box.pack_start (color_drop_down, false, false, 0);
+			menu_box.append (player_one_name_box);
+			menu_box.append (player_two_name_box);
+			menu_box.append (single_player_option);
+			//menu_box.pack_start (color_drop_down, false, false, 0);
 
-			menu_box.pack_start (start_game_button, true, false, 0);
+			menu_box.append (start_game_button);
 
-			main_menu_screen.pack_start (menu_box, true, false, 12);
+			main_menu_screen.append (menu_box); // true, false, 12
 
 			start_game_button.grab_focus ();
 			start_game_button.clicked.connect (on_start_game_clicked);
@@ -102,7 +103,7 @@ namespace Eksanos {
 				player_two_name += "_O";
 			}
 
-			start_game_requested (player_one_name, player_two_name, single_player_mode_switch.get_active () ,color_drop_down.get_color_selected ());
+			//start_game_requested (player_one_name, player_two_name, single_player_mode_switch.get_active () ,color_drop_down.get_color_selected ());
 		}
 	}
 }

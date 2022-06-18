@@ -5,7 +5,7 @@
 namespace Eksanos {
 	public class MainWindow : Gtk.ApplicationWindow {
 		//private Controllers.Game game_controller;
-		//private MainMenu main_menu;
+		private MainMenu main_menu;
 		private Gtk.HeaderBar header_bar;
 		private Adw.Leaflet leaflet;
 		private Gtk.Button nav_button;
@@ -32,7 +32,7 @@ namespace Eksanos {
 			nav_button.set_can_focus (false);
 
 			//game_controller = new Controllers.Game (this);
-			//main_menu = new MainMenu ();
+			main_menu = new MainMenu ();
 
 			//game_controller.get_game_screen ().quit_game_requested.connect (on_quit_game_requested);
 			//game_controller.get_game_screen ().back_to_main_menu_requested.connect (() => {
@@ -67,9 +67,9 @@ namespace Eksanos {
 		private void setup_leaflet () {
 			leaflet = new Adw.Leaflet ();
 			leaflet.set_transition_type (Adw.LeafletTransitionType.UNDER);
-			//leaflet.append (main_menu.get_menu_screen ());
+			leaflet.append (main_menu.get_menu_screen ());
 			//leaflet.append (game_controller.get_game_screen ());
-			//leaflet.set_visible_child (main_menu.get_menu_screen ());
+			leaflet.set_visible_child (main_menu.get_menu_screen ());
 		}
 
 		private void setup_connections () {

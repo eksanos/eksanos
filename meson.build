@@ -13,7 +13,7 @@ executable(
 	gresource,
 	'src'/'Application.vala',
 	'src'/'MainWindow.vala',
-	#'src'/'MainMenu.vala',
+	'src'/'MainMenu.vala',
 	#'src'/'Controllers'/'Game.vala',
 	#'src'/'Model'/'Game.vala',
 	#'src'/'Model'/'Player.vala',
