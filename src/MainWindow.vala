@@ -21,7 +21,6 @@ namespace Eksanos {
 		}
 
 		construct {
-			//Adw.init ();
 			var global_grid = new Gtk.Grid ();
 			global_grid.orientation = Gtk.Orientation.VERTICAL;
 

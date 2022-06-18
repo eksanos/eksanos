@@ -13,11 +13,11 @@ namespace Eksanos.Widgets {
 			add_css_class (Granite.STYLE_CLASS_ROUNDED);
 			set_hexpand (true);
 
-
 			player_name_label = new Gtk.Label (player_name);
-			//player_name_label.margin = 4;
+			player_name_label.set_margin_top (4);
+
 			player_score_label = new Gtk.Label ("Matches Won: 0");
-			//player_score_label.margin = 4;
+			player_score_label.set_margin_bottom (4);
 
 			append (player_name_label); //, false, false, 12);
 			append (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
