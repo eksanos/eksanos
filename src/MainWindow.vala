@@ -4,7 +4,7 @@
  */
 namespace Eksanos {
 	public class MainWindow : Gtk.ApplicationWindow {
-		//private Controllers.Game game_controller;
+		private Controllers.Game game_controller;
 		private MainMenu main_menu;
 		private Gtk.HeaderBar header_bar;
 		private Adw.Leaflet leaflet;
@@ -31,7 +31,7 @@ namespace Eksanos {
 			nav_button.set_visible (true);
 			nav_button.set_can_focus (false);
 
-			//game_controller = new Controllers.Game (this);
+			game_controller = new Controllers.Game (this);
 			main_menu = new MainMenu ();
 
 			//game_controller.get_game_screen ().quit_game_requested.connect (on_quit_game_requested);
