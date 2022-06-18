@@ -101,8 +101,7 @@ namespace Eksanos {
 			menu_box.append (options_box);
 			menu_box.append (play_box);
 
-			main_menu_screen.append (menu_box); // true, false, 12
-
+			main_menu_screen.append (menu_box); 
 			start_game_button.grab_focus ();
 			start_game_button.clicked.connect (on_start_game_clicked);
 		}
@@ -127,7 +126,7 @@ namespace Eksanos {
 				player_two_name += "_O";
 			}
 
-			//start_game_requested (player_one_name, player_two_name, single_player_mode_switch.get_active () ,color_drop_down.get_color_selected ());
+			start_game_requested (player_one_name, player_two_name, single_player_mode_switch.get_active (), color_drop_down.get_color_selected ());
 		}
 	}
 }
