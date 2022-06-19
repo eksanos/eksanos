@@ -4,7 +4,7 @@
 
 A simple TicTacToe app made for elementary OS.
 
-![Screenshot of the app](https://raw.githubusercontent.com/eksanos/eksanos/main/data/screenshots/eksanos_menu_banana.png)
+![Screenshot of the app](https://raw.githubusercontent.com/eksanos/eksanos/main/data/screenshots/eksanos_banana_v1-2-0.png)
 
 
 ## Building
