@@ -19,16 +19,19 @@ namespace Eksanos.Widgets {
 			cross_res_path = "/com/github/eksanos/eksanos/cross_banana.png";
 			vexpand = true;
 			hexpand = true;
-			set_size_request (108, 108);
+			set_size_request (96, 96);
 			set_can_focus (false);
+			add_css_class ("tile");
 			clicked.connect(on_tile_clicked);
 		}
 
 		public void update_tile_marker (string marker) {
+			add_css_class ("filled-tile");
+			remove_css_class ("empty-tile");
+
 			if (marker == "X") {
 				current_marker = new Gtk.Image.from_resource (cross_res_path);
 				set_child (current_marker);
-				print (cross_res_path);
 			} else {
 				current_marker = new Gtk.Image.from_resource (circle_res_path);
 				set_child (current_marker);
@@ -42,6 +45,8 @@ namespace Eksanos.Widgets {
 
 		public void clear_tile () {
 			set_child (null);
+			add_css_class ("empty-tile");
+			remove_css_class ("filled-tile");
 		}
 
 		public void on_tile_clicked () {

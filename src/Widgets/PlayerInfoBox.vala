@@ -40,10 +40,12 @@ namespace Eksanos.Widgets {
 
 		public void disable () {
 			set_sensitive (false);
+			remove_css_class ("active");
 		}
 
 		public void enable () {
 			set_sensitive (true);
+			add_css_class ("active");
 		}
 	}
 }

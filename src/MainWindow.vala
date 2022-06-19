@@ -14,8 +14,8 @@ namespace Eksanos {
 			Object (
 				application: eksanos_app,
 				title: "Eksanos",
-				default_height: 640,
-				default_width: 360,
+				default_height: 600,
+				default_width: 320,
 				resizable: false
 			);
 		}
