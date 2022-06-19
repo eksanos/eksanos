@@ -60,7 +60,7 @@ namespace Eksanos.Controllers {
 
 		private void on_match_completed (int result) {
 			game_screen.disable_board ();
-			game_screen.show_match_over_dialog(result);
+			game_screen.show_match_over_message(result);
 		}
 
 		private void on_board_updated (string[,] board_state) {

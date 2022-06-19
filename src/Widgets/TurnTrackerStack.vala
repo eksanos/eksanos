@@ -3,6 +3,7 @@ namespace Eksanos.Widgets {
 		private Gtk.Label turn_label;
 		private Gtk.Label empty_label;
 		private Gtk.Stack stack;
+		
 		public TurnTrackerStack (string default_label_text) {
 			orientation = Gtk.Orientation.VERTICAL;
 			set_hexpand (true);

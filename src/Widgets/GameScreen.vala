@@ -91,6 +91,32 @@ namespace Eksanos.Widgets {
 			board_grid.update_marker_color (color_name);
 		}
 
+		public void show_match_over_message (int match_result) {
+			string player_one_name = player_one_info_box.get_player_name();
+			string player_two_name = player_two_info_box.get_player_name();
+
+			string primary_message = "";
+			string secondary_message = "";
+
+			switch(match_result) {
+				case MatchResults.MATCH_DRAW:
+					primary_message = "DRAW!";
+					secondary_message = "Neither player could get three in a row. Perhaps a rematch is in order?";
+					break;
+				case MatchResults.MATCH_PLAYER_ONE_WON:
+					primary_message = player_one_name + " WON!";
+					secondary_message = "Congratulations " + player_one_name + "!";
+					break;
+				case MatchResults.MATCH_PLAYER_TWO_WON:
+					primary_message = player_two_name + " WON!";
+					secondary_message = "Congratulations " + player_two_name + "!";
+					break;
+			}
+
+			turn_tracker_stack.add_turn_text (primary_message);
+		}
+
+
 		public void show_match_over_dialog (int result) {
 			string player1_name = player_one_info_box.get_player_name();
 			string player2_name = player_two_info_box.get_player_name();
