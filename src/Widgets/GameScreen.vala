@@ -117,7 +117,7 @@ namespace Eksanos.Widgets {
 			set_margin_end (12);
 			set_margin_bottom (12);
 
-			Gtk.Frame board_frame = new Gtk.Frame (null);
+			Gtk.AspectFrame board_frame = new Gtk.AspectFrame (0.5f, 0.5f, 1, false);
 			board_frame.set_valign (Gtk.Align.CENTER);
 			turn_tracker_stack = new TurnTrackerStack ("Player 1" + "'s Turn");
 

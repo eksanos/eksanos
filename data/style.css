@@ -1,0 +1,41 @@
+button.tile {
+	margin: 2px;
+	transform: scale(1.0);
+   }
+   
+   button.empty-tile {
+	opacity : 0;
+   }
+   
+   button.filled-tile {
+	opacity : 100;
+	border-radius : 50%;
+	//border-width: 1px;
+	//border-color : @accent_color;
+	//box-shadow: 0px 0px 3px 0px @accent_color;
+	//background-color : #e7e7f0;
+   }
+   
+   button.dark {
+	background-color : #202020;
+   }
+   
+   button.light {
+	background-color :  #e7e7f0;
+   }
+   
+   box.active {
+	box-shadow: 0px 0px 3px 1px @accent_color;
+   }
+   
+   frame {
+	border-radius : 1%;
+	border-width : 0px;
+   }
+   
+   grid > frame {
+	border-radius : 1%;
+	border-width : 1px;
+	border-color : @BLACK_700;
+   }
+   

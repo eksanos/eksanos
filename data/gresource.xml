@@ -21,5 +21,6 @@
 		<file >circle_orange.png</file>
 		<file >circle_slate.png</file>
 		<file >circle_strawberry.png</file>
+		<file >style.css</file>
 	</gresource>
 </gresources>
