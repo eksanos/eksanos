@@ -18,19 +18,16 @@
 
 	<screenshots>
 		<screenshot type="default">
-			<image>https://raw.githubusercontent.com/eksanos/eksanos/main/data/screenshots/eksanos_menu_banana.png</image>
+			<image>https://raw.githubusercontent.com/eksanos/eksanos/main/data/screenshots/eksanos_banana_v1-2-0.png</image>
 		</screenshot>
 		<screenshot>
-			<image>https://raw.githubusercontent.com/eksanos/eksanos/main/data/screenshots/eksanos_banana_v2.png</image>
+			<image>https://raw.githubusercontent.com/eksanos/eksanos/main/data/screenshots/eksanos_blueberry_v1-2-0.png</image>
 		</screenshot>
 		<screenshot>
-			<image>https://raw.githubusercontent.com/eksanos/eksanos/main/data/screenshots/eksanos_blueberry_v2.png</image>
+			<image>https://raw.githubusercontent.com/eksanos/eksanos/main/data/screenshots/eksanos_strawberry_v1-2-0.png</image>
 		</screenshot>
 		<screenshot>
-			<image>https://raw.githubusercontent.com/eksanos/eksanos/main/data/screenshots/eksanos_lime_v2.png</image>
-		</screenshot>
-		<screenshot>
-			<image>https://raw.githubusercontent.com/eksanos/eksanos/main/data/screenshots/eksanos_lime_light.png</image>
+			<image>https://raw.githubusercontent.com/eksanos/eksanos/main/data/screenshots/eksanos_menu_v1-2-0.png</image>
 		</screenshot>
 	</screenshots>
 
@@ -65,12 +62,13 @@
 	</content_rating>
 
 	<releases>
-		<release version="1.1.0" date="2022-02-04" urgency="low">
+		<release version="1.2.0" date="2022-06-19" urgency="low">
 			<description>
-				<p>UI Update</p>
+				<p>Maintainance Update</p>
 				<ul>
-					<li>Compacted design to reduce unused empty space</li>
-					<li>Various styling changes</li>
+					<li>Updated design to enhance user experience</li>
+					<li>Changed window size</li>
+					<li>Updated codebase</li>
 				</ul>
 			</description>
 		</release>
